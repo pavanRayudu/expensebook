@@ -17,6 +17,7 @@ const AddExpense = ({ handleModal }) => {
         e.preventDefault();
         console.log(formData)
         setFormData(INITIAL_DATA)
+        handleModal(false)
     }
 
     return (
