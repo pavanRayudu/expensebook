@@ -1,6 +1,7 @@
 import React, { useContext, useMemo } from 'react'
 import ExpenseContext from './context/ExpenseContext'
 import { IoFilterSharp } from "react-icons/io5";
+import { FaArrowAltCircleUp, FaArrowAltCircleDown } from "react-icons/fa";
 
 const ExpenseSummary = () => {
 
@@ -24,8 +25,11 @@ const ExpenseSummary = () => {
     return (
         <div className='expense-summary'>
             <div className="expense-total">
-                <h2><span>{totalExpense}</span>/{totalReceivedMoney}</h2>
-                <span><h3>{totalReceivedMoney - totalExpense}</h3></span>
+                <h2>
+                    <span id='amount-spent'><FaArrowAltCircleDown />{totalExpense}</span> -
+                    <span id='balance-amount'>{totalReceivedMoney - totalExpense}</span> -
+                    <span id='total-amount'>{totalReceivedMoney}<FaArrowAltCircleUp /></span>
+                </h2>
             </div>
 
             <div className="expenses-filter">

@@ -27,20 +27,32 @@ body {
 
 .app {
   margin-inline: 1rem;
-  overflow: hidden;
+  position: relative;
+}
+
+.element {
+  width: 100%;
+  height: 80px;
+  background: linear-gradient(transparent, var(--clr-main-background));
+  position: fixed;
+  bottom: 0;
+  left: 0;
 }
 
 .header {
-  padding-block: 2rem;
+  padding-block: 2rem 1rem;
   background-color: var(--clr-main-background);
   text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 999;
 
 }
 
 .header .button-group {
   display: flex;
   justify-content: center;
-  gap: 1rem;
+  gap: 0.5rem;
 }
 
 .header .button-group button,
@@ -63,21 +75,21 @@ body {
 }
 
 .add-expense-modal {
-  inset: 0 0 0 0;
+  top: 50%;
   position: absolute;
   z-index: 999;
-  background-color: rgba(0, 0, 0, 0.75);
+
   display: flex;
   align-items: center;
   justify-content: center;
-  
+
 }
 
 .add-expense-modal .expense-form {
   padding: 1rem;
   background-color: var(--clr-main-background);
   position: relative;
-  border-radius: 8px;
+  border-radius: 2rem;
 }
 
 .expense-form #close-btn {
@@ -123,8 +135,7 @@ body {
 .expense-container {
   position: relative;
   overflow: scroll;
-  height: 400px;
-  
+
 }
 
 .expense-container .expense-list {
@@ -144,7 +155,7 @@ body {
   position: relative;
 }
 
-.delete-expense{
+.delete-expense {
   position: absolute;
   top: -4px;
   right: 0;
@@ -160,7 +171,7 @@ body {
 
 .expense-item .expense-details {
   display: flex;
-  gap: 0.8rem;
+  gap: 0.5rem;
   overflow-x: hidden;
 
 }
@@ -171,17 +182,22 @@ body {
   align-items: center;
   background-color: var(--clr-expense-date-background);
   padding: 0.5rem;
+  margin: 5px;
+  border-radius: 4px;
 }
 
 #expense-date-day {
   font-weight: bold;
-  font-size: 1.2rem;
+  font-size: 1rem;
+
+
 }
 
 #expense-date-year,
 #expense-date-month {
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   opacity: 0.8;
+  font-weight: lighter;
 }
 
 .expense-details .expense-description {
@@ -191,7 +207,8 @@ body {
   padding-block: 0rem;
   overflow: hidden;
 }
-.expense-description .expense-name{
+
+.expense-description .expense-name {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -212,28 +229,52 @@ body {
   padding: 0.5rem;
   color: red;
 }
-#salary, #person{
+
+#salary,
+#person {
   color: green;
 }
 
-.expense-summary{
+.expense-summary {
   display: flex;
   justify-content: space-between;
   align-items: center;
   /* background-color: red; */
   margin-top: 1rem;
 }
-.expense-summary .expense-total h2{
-  font-size: 1.2rem;
-  color: green;
+
+.expense-summary .expense-total h2 {
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 
   span{
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+
+  #amount-spent {
     color: red;
-    font-size: 1.8rem;
+  }
+
+  #total-amount {
+    color: green;
+  }
+
+  #balance-amount {
+    color: gray;
+    font-size: 0.8rem;
   }
 }
 
-.expenses-filter{
+.expense-summary .balance-amount {
+  color: rgb(105, 105, 105);
+  font-size: 1rem;
+}
+
+.expenses-filter {
   /* background-color: antiquewhite; */
 }
 

@@ -9,7 +9,7 @@ const Header = () => {
 
   return (
     <div className='header'>
-      <h1 id='greeting'>Good Evening, Jack !</h1>
+      <h1 id='greeting'>Good Evening, Venkat!</h1>
       <div className='button-group'>
         <button id='add-money-btn' onClick={() => setShowAddMoneyModal(true)}>Add Money</button>
         <button id='add-expense-btn' onClick={() => setShowExpenseModal(true)}>Add Expense</button>
