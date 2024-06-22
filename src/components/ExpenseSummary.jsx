@@ -12,7 +12,7 @@ const ExpenseSummary = () => {
 
     const totalReceivedMoney = useMemo(() =>
         expenseList.reduce(function (accumulator, curValue) {
-            return accumulator + (curValue.expenseType === ("salary" || "person") ? Number(curValue.expenseAmount) : 0)
+            return accumulator + ((curValue.expenseType === "salary" || curValue.expenseType === "person") ? Number(curValue.expenseAmount) : 0)
         }, 0)
         , [expenseList])
 
