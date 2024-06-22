@@ -18,9 +18,9 @@ const ExpenseList = () => {
             <ul className='expense-list'>
                 {
                     expList.map((expense) => {
-                        return (
+                        return (expense.expenseId ?
                             <li className='expense-item' key={expense.expenseId}>
-                                <button className='delete-expense' onClick={() => removeExpense(expense) }>
+                                <button className='delete-expense' onClick={() => removeExpense(expense)}>
                                     <FaMinus />
                                 </button>
                                 <div className='expense-details'>
@@ -41,7 +41,7 @@ const ExpenseList = () => {
                                 <div className="expense-amount" id={expense.expenseType}>
                                     <span>Rs.{expense.expenseAmount}/-</span>
                                 </div>
-                            </li>
+                            </li> : <></>
                         )
                     })
                 }

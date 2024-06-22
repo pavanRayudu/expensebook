@@ -325,4 +325,3 @@ export const DUMMY_EXPENSES_DATA = [
     },
 ]
 
-window.localStorage.setItem('myExpenseData', JSON.stringify(DUMMY_EXPENSES_DATA))
