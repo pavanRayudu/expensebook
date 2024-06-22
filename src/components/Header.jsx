@@ -7,7 +7,7 @@ const Header = () => {
   const [showExpenseModal, setShowExpenseModal] = useState(false);
   const [showAddMoneyModal, setShowAddMoneyModal] = useState(false);
 
-  function getDaySate() {
+  function getDayState() {
     let state = "Morning";
        const now = new Date().getHours();
        if(now >= 12 && now <= 16) {
