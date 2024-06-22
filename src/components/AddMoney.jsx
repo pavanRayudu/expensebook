@@ -2,13 +2,14 @@ import React, { useContext, useState } from 'react'
 import { IoIosClose } from "react-icons/io";
 import ExpenseContext from './context/ExpenseContext';
 
-const INITIAL_DATA = { expenseDate: "", expenseType: "food", expenseName: "", expenseAmount: 0 }
+const INITIAL_DATA = { expenseDate: "", expenseType: "salary", expenseName: "", expenseAmount: 0 }
 
 
 
-const AddExpense = ({ handleModal }) => {
+const AddMoney = ({ handleModal }) => {
 
     const { addExpense } = useContext(ExpenseContext);
+
     const [formData, setFormData] = useState(INITIAL_DATA)
 
     function handleChange(e) {
@@ -34,21 +35,18 @@ const AddExpense = ({ handleModal }) => {
                 <IoIosClose id='close-btn' onClick={() => handleModal(false)} />
                 <form onSubmit={handleFormSubmit}>
                     <div className="input-field">
-                        <label htmlFor="expense-type">Expense type: </label>
                         <select
                             value={formData.expenseType}
                             name="expenseType"
                             id="expense-type"
                             onChange={handleChange}>
 
-                            <option value="travel">Travel</option>
-                            <option value="food">Food</option>
-                            <option value="groceries">Groceries</option>
+                            <option value="salary">Salary</option>
                             <option value="others">Others</option>
                         </select>
                     </div>
                     <div className="input-field">
-                        <label htmlFor="expense-name">Expense for... </label>
+                        <label htmlFor="expense-name">Amount Received from... </label>
                         <input
                             value={formData.expenseName}
                             name="expenseName"
@@ -59,7 +57,7 @@ const AddExpense = ({ handleModal }) => {
                             required />
                     </div>
                     <div className="input-field">
-                        <label htmlFor="expense-amount">Expense amount... </label>
+                        <label htmlFor="expense-amount">Amount received... </label>
                         <input
                             value={formData.expenseAmount}
                             name='expenseAmount'
@@ -70,7 +68,7 @@ const AddExpense = ({ handleModal }) => {
                             required />
                     </div>
                     <div className="input-field">
-                        <label htmlFor="expense-date">spent on </label>
+                        <label htmlFor="expense-date">Received on </label>
                         <input
                             value={formData.expenseDate}
                             name='expenseDate'
@@ -86,4 +84,4 @@ const AddExpense = ({ handleModal }) => {
     )
 }
 
-export default AddExpense
+export default AddMoney

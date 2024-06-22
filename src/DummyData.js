@@ -181,20 +181,8 @@ export const DUMMY_EXPENSES_DATA = [
         expenseAmount: 20,
         expenseType: "travel"
     },
-    {
-        expenseId: 27,
-        expenseDate: '2024-06-09',
-        expenseName: "Icecream",
-        expenseAmount: 25,
-        expenseType: "food"
-    },
-    {
-        expenseId: 28,
-        expenseDate: '2024-06-10',
-        expenseName: "Auto Charge to Infosys",
-        expenseAmount: 20,
-        expenseType: "travel"
-    },
+
+
     {
         expenseId: 29,
         expenseDate: '2024-06-10',
@@ -283,7 +271,7 @@ export const DUMMY_EXPENSES_DATA = [
         expenseId: 41,
         expenseDate: '2024-06-17',
         expenseName: "Icecream",
-        expenseAmount: 30,
+        expenseAmount: 10,
         expenseType: "food"
     },
     {
@@ -336,3 +324,5 @@ export const DUMMY_EXPENSES_DATA = [
         expenseType: "food"
     },
 ]
+
+window.localStorage.setItem('myExpenseData', JSON.stringify(DUMMY_EXPENSES_DATA))

@@ -1,16 +1,28 @@
-import React from 'react'
-import { DUMMY_EXPENSES_DATA } from '../DummyData'
+import React, { useContext, useEffect, useState } from 'react'
+import ExpenseContext from './context/ExpenseContext';
+import { FaMinus } from "react-icons/fa";
+
 const ExpenseList = () => {
+    const { expenseList, removeExpense } = useContext(ExpenseContext);
+    const [expList, setExpList] = useState(expenseList);
+
+    useEffect(() => {
+        setExpList(expenseList)
+    }, [expenseList])
 
     const month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
     return (
         <div className='expense-container'>
+
             <ul className='expense-list'>
                 {
-                    DUMMY_EXPENSES_DATA.map((expense) => {
+                    expList.map((expense) => {
                         return (
                             <li className='expense-item' key={expense.expenseId}>
+                                <button className='delete-expense' onClick={() => removeExpense(expense) }>
+                                    <FaMinus />
+                                </button>
                                 <div className='expense-details'>
                                     <div className="expense-date">
                                         <span id='expense-date-month'>{
@@ -26,7 +38,7 @@ const ExpenseList = () => {
 
                                 </div>
 
-                                <div className="expense-amount">
+                                <div className="expense-amount" id={expense.expenseType}>
                                     <span>Rs.{expense.expenseAmount}/-</span>
                                 </div>
                             </li>

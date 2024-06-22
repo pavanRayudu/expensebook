@@ -1,13 +1,18 @@
-import AddExpense from "./components/AddExpense";
 import ExpenseList from "./components/ExpenseList";
+import ExpenseSummary from "./components/ExpenseSummary";
 import Header from "./components/Header";
+import { ExpenseContextProvider } from "./components/context/ExpenseContext";
 
 const App = () => {
   return (
-    <div className="app">
-      <Header />
-      <ExpenseList />
-    </div>
+
+    <ExpenseContextProvider>
+      <div className="app">
+        <Header />
+        <ExpenseList />
+      </div>
+    </ExpenseContextProvider>
+
   )
 }
 
