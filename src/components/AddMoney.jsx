@@ -53,7 +53,7 @@ const AddMoney = ({ handleModal }) => {
                             onChange={handleChange}
                             type="text"
                             id='expense-name'
-                            placeholder='Groceries...'
+                            placeholder='e.g krishna '
                             required />
                     </div>
                     <div className="input-field">
