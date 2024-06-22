@@ -42,7 +42,7 @@ const AddMoney = ({ handleModal }) => {
                             onChange={handleChange}>
 
                             <option value="salary">Salary</option>
-                            <option value="others">Others</option>
+                            <option value="person">Person</option>
                         </select>
                     </div>
                     <div className="input-field">
