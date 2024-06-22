@@ -44,6 +44,7 @@ const AddExpense = ({ handleModal }) => {
                             <option value="travel">Travel</option>
                             <option value="food">Food</option>
                             <option value="groceries">Groceries</option>
+                            <option value="investment">Investment</option>
                             <option value="others">Others</option>
                         </select>
                     </div>
