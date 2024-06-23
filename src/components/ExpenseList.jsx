@@ -13,7 +13,7 @@ const ExpenseList = () => {
     const month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     
     function handleDeletion(expense){
-        if(confirm(`Are you sure to delete this expense `)){
+        if(confirm(`Are you sure to delete ${expense.expenseName}?`)){
             removeExpense(expense);
         }
     }
