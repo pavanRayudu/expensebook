@@ -5,20 +5,12 @@ import { FaMinus } from "react-icons/fa";
 const ExpenseList = () => {
     const { expenseList, removeExpense } = useContext(ExpenseContext);
     const [expList, setExpList] = useState(expenseList);
-    const [ showDeletionPopup, setShowDeletionPopup ] = useState(false);
     
     useEffect(() => {
         setExpList(expenseList)
     }, [expenseList])
 
     const month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-
-    function handleDeletion(id){
-        const duplicate = expList;
-        const updatedState = duplicate.filter((item) => item.id === id );
-        updatedState[0].expenseFlag = true;
-        setExpList(prevState => [...prevState,...updatedState])
-    }
     
     return (
         <div className='expense-container'>
@@ -28,12 +20,7 @@ const ExpenseList = () => {
                     expList.map((expense) => {
                         return (expense.expenseId ?
                             <li className='expense-item' key={expense.expenseId}>
-                                <button className='delete-expense' onClick={() => handleDeletion(expense.expenseId)}>
-                                    {showDeletionPopup &&
-                                        <div>
-                                            <button onClick={() => removeExpense(expense)}>D</button>
-                                            <button onClick={() => setShowDeletionPopup(false)}>C</button>
-                                        </div> }
+                                <button className='delete-expense' onClick={() => removeExpense(expense)}>
                                     <FaMinus />
                                 </button>
                                 <div className='expense-details'>
