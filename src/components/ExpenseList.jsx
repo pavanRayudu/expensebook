@@ -13,6 +13,10 @@ const ExpenseList = () => {
 
     const month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
+    function handleDeletion(id){
+        
+    }
+    
     return (
         <div className='expense-container'>
 
@@ -21,7 +25,7 @@ const ExpenseList = () => {
                     expList.map((expense) => {
                         return (expense.expenseId ?
                             <li className='expense-item' key={expense.expenseId}>
-                                <button className='delete-expense' onClick={() => setShowDeletionPopup(true)}>
+                                <button className='delete-expense' onClick={() => handleDeletion(expense.expenseId)}>
                                     {showDeletionPopup &&
                                         <div>
                                             <button onClick={() => removeExpense(expense)}>D</button>
