@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react'
 import { IoIosClose } from "react-icons/io";
 import ExpenseContext from './context/ExpenseContext';
 
-const INITIAL_DATA = { expenseDate: "", expenseType: "food", expenseName: "", expenseAmount: 0 }
+const INITIAL_DATA = { expenseDate: "", expenseType: "food", expenseName: "", expenseAmount: 0,expenseFlag: false }
 
 
 
