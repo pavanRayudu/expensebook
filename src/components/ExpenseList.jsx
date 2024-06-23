@@ -5,7 +5,8 @@ import { FaMinus } from "react-icons/fa";
 const ExpenseList = () => {
     const { expenseList, removeExpense } = useContext(ExpenseContext);
     const [expList, setExpList] = useState(expenseList);
-
+    const [ showDeletionPopup, setShowDeletionPopup ] = useState(false);
+    
     useEffect(() => {
         setExpList(expenseList)
     }, [expenseList])
@@ -20,7 +21,12 @@ const ExpenseList = () => {
                     expList.map((expense) => {
                         return (expense.expenseId ?
                             <li className='expense-item' key={expense.expenseId}>
-                                <button className='delete-expense' onClick={() => removeExpense(expense)}>
+                                <button className='delete-expense' onClick={() => setShowDeletionPopup(true)}>
+                                    {showDeletionPopup &&
+                                        <div>
+                                            <button onClick={() => removeExpense(expense)}>D</button>
+                                            <button onClick={() => setShowDeletionPopup(false)}>C</button>
+                                        </div> }
                                     <FaMinus />
                                 </button>
                                 <div className='expense-details'>
