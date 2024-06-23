@@ -12,6 +12,12 @@ const ExpenseList = () => {
 
     const month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     
+    function handleDeletion(expense){
+        if(confirm(`Are you sure to delete this expense `)){
+            removeExpense(expense);
+        }
+    }
+    
     return (
         <div className='expense-container'>
 
@@ -20,7 +26,7 @@ const ExpenseList = () => {
                     expList.map((expense) => {
                         return (expense.expenseId ?
                             <li className='expense-item' key={expense.expenseId}>
-                                <button className='delete-expense' onClick={() => removeExpense(expense)}>
+                                <button className='delete-expense' onClick={() => handleDeletion(expense)}>
                                     <FaMinus />
                                 </button>
                                 <div className='expense-details'>
