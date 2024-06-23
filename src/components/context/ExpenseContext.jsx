@@ -40,6 +40,21 @@ export function ExpenseContextProvider({ children }) {
         window.localStorage.setItem('myExpenseData', JSON.stringify(updatedExpense));
 
     }
+    expenseList.sort((a, b) => {
+    // Convert both dates to milliseconds since Unix epoch
+    const dateA = new Date(a.expenseDate).getTime();
+    const dateB = new Date(b.expenseDate).getTime();
+
+    // Compare the dates
+    if (dateA < dateB) {
+        return -1;
+    }
+    if (dateA > dateB) {
+        return 1;
+    }
+    return 0;
+});
+
     const context = { expenseList, addExpense, removeExpense };
 
     return <ExpenseContext.Provider value={context}>{children}</ExpenseContext.Provider>
