@@ -145,7 +145,7 @@ body {
 
 .expense-container .expense-list {
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   gap: 0.5rem;
   margin-top: 0.5rem;
 }
