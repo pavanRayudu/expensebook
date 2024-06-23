@@ -14,7 +14,10 @@ const ExpenseList = () => {
     const month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
     function handleDeletion(id){
-        
+        const duplicate = expList;
+        const updatedState = duplicate.filter((item) => item.id === id );
+        updatedState[0].expenseFlag = true;
+        setExpList(prevState => [...prevState,...updatedState])
     }
     
     return (
