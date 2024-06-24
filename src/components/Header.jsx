@@ -10,7 +10,7 @@ const Header = () => {
   function getDayState() {
     let state = "Morning";
        const now = new Date().getHours();
-       if(now >= 12 && now <= 16) {
+       if(now >= 12 && now < 16) {
          state = "Afternoon";
        } else if(now > 16 && now < 24) {
          state = "Evening";
