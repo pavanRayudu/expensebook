@@ -14,6 +14,8 @@ const Header = () => {
          state = "Afternoon";
        } else if(now > 16 && now < 24) {
          state = "Evening";
+       } else if(now > 22 && now< 5) {
+         state = "Please sleep 🙏";
        }
     return state;
   }
