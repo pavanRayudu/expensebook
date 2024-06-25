@@ -39,7 +39,7 @@ export function ExpenseContextProvider({ children }) {
     function removeExpense(item) {
 
         const findKeyByValue = (obj, targetValue) => {
-            const entry = Object.entries(obj).find(([key, nestedObj]) => nestedObj.value === targetValue);
+            const entry = Object.entries(data).find(([key, nestedObj]) => nestedObj.value === targetValue);
             return entry ? entry[0] : undefined;
         };
 
