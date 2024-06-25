@@ -39,11 +39,11 @@ export function ExpenseContextProvider({ children }) {
     function removeExpense(item) {
 
         const findKeyByValue = (obj, targetValue) => {
-            const entry = Object.entries(data).find(([key, nestedObj]) => nestedObj.value === targetValue);
+            const entry = Object.entries(obj).find(([key, nestedObj]) => nestedObj.expenseId === targetValue);
             return entry ? entry[0] : undefined;
         };
 
-        const key = findKeyByValue(data, item.id);
+        const key = findKeyByValue(data, item.expenseId);
         console.log(typeof (key)); 
         const itemRef = ref(firebaseDb, `expenses/${key}`); 
 
