@@ -7,7 +7,6 @@ const ExpenseList = () => {
     const [expList, setExpList] = useState(expenseList);
     
     useEffect(() => {
-        
         setExpList(expenseList)
     }, [expenseList])
 
