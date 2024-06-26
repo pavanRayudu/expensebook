@@ -264,7 +264,10 @@ body {
     color: red;
 
     .outgoing-icon{
-      transform: rotateZ(45deg);
+      transform: rotateZ(135deg);
+    }
+    .incoming-icon{
+      transform: rotateZ(-135deg);
     }
   }
 
