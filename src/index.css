@@ -262,6 +262,10 @@ body {
 
   #amount-spent {
     color: red;
+
+    .outgoing-icon{
+      transform: rotateZ(45deg);
+    }
   }
 
   #total-amount {
