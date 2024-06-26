@@ -57,6 +57,7 @@ body {
 
 .header .button-group button,
 .expense-form form button {
+  width: 150px;
   cursor: pointer;
   background: none;
   outline: none;
