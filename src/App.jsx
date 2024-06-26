@@ -4,11 +4,16 @@ import Header from "./components/Header";
 import { ExpenseContextProvider } from "./components/context/ExpenseContext";
 
 const App = () => {
+  const[isLoggedIn, setIsLoggedIn] = useState(true);
+  
   return (
     <ExpenseContextProvider>
       <div className="app">
-        <Header />
-        <ExpenseList />
+        
+        {isLoggedIn &&<main>
+          <Header />
+          <ExpenseList />
+        </main>}
         <div className="element"></div>
       </div>
     </ExpenseContextProvider>
