@@ -5,7 +5,6 @@ import { ExpenseContextProvider } from "./components/context/ExpenseContext";
 
 const App = () => {
   return (
-
     <ExpenseContextProvider>
       <div className="app">
         <Header />
@@ -13,7 +12,6 @@ const App = () => {
         <div className="element"></div>
       </div>
     </ExpenseContextProvider>
-
   )
 }
 
