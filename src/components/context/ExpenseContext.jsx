@@ -1,6 +1,5 @@
 import { createContext, useEffect, useState } from "react";
 import axios from "axios";
-// import firebaseDb from "../../dbConfig";
 import { get, ref,remove,getDatabase } from 'firebase/database'
 import { firebaseDb } from "../../dbConfig";
 
@@ -17,7 +16,7 @@ export function ExpenseContextProvider({ children }) {
     }, [expenseList])
 
     async function fetchData() {
-        const expenseRef = ref(firebaseDb,'expenses');
+        const expenseRef = await ref(firebaseDb,'expenses');
         get(expenseRef).then((snapshot) => {
             if(snapshot.exists()){
                 setData(snapshot.val())
@@ -32,7 +31,7 @@ export function ExpenseContextProvider({ children }) {
 
     async function addExpense(expense) {
         setExpenseList(prev => [...prev, expense])
-        axios.post(url, expense).then((data) => console.log("Submission sucessful"))
+        axios.post(url, expense)
 
     }
 
