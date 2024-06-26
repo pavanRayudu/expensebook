@@ -33,7 +33,7 @@ const ExpenseSummary = () => {
             </div>
 
             <div className="expenses-filter">
-                <button onClick={handleClick}>filter <IoFilterSharp /></button>
+                <button onClick={handleClick} disabled> <IoFilterSharp /></button>
             </div>
 
         </div>
