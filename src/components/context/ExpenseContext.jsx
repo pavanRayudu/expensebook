@@ -1,6 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import axios from "axios";
-import { get, ref,remove,getDatabase } from 'firebase/database'
+import { get, ref, remove, getDatabase } from 'firebase/database'
 import { firebaseDb } from "../../dbConfig";
 
 const ExpenseContext = createContext(null);
@@ -9,7 +9,6 @@ const url = "https://expense-book-dd36d-default-rtdb.firebaseio.com/expenses.jso
 export function ExpenseContextProvider({ children }) {
     const [data, setData] = useState({});
     const [expenseList, setExpenseList] = useState([]);
-
 
     useEffect(() => {
         fetchData()
@@ -24,44 +23,32 @@ export function ExpenseContextProvider({ children }) {
                 setExpenseList(expenseArray)
             }
         })
-        
     }
-
-
 
     async function addExpense(expense) {
         setExpenseList(prev => [...prev, expense])
         axios.post(url, expense)
-
     }
 
     function removeExpense(item) {
-
         const findKeyByValue = (obj, targetValue) => {
             const entry = Object.entries(obj).find(([key, nestedObj]) => nestedObj.expenseId === targetValue);
             return entry ? entry[0] : undefined;
         };
 
         const key = findKeyByValue(data, item.expenseId);
-        console.log(typeof (key)); 
         const itemRef = ref(firebaseDb, `expenses/${key}`); 
 
-       remove(itemRef)
+        remove(itemRef)
 
-        const filterredList = expenseList.filter((expense) => expense.id !== item.id)
-        setExpenseList(filterredList)
-        // const updatedExpense = expenseList.filter((expense) => expense.expenseId !== item.expenseId)
-
-
-        setExpenseList(filterredList)
-
+        const updatedExpense = expenseList.filter((expense) => expense.expenseId !== item.expenseId);
+        setExpenseList(updatedExpense)
     }
+    
     expenseList.sort((a, b) => {
-        // Convert both dates to milliseconds since Unix epoch
         const dateA = new Date(a.expenseDate).getTime();
         const dateB = new Date(b.expenseDate).getTime();
 
-        // Compare the dates
         if (dateA < dateB) {
             return -1;
         }
