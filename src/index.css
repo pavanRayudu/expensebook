@@ -266,13 +266,14 @@ body {
     .outgoing-icon{
       transform: rotateZ(135deg);
     }
-    .incoming-icon{
-      transform: rotateZ(-135deg);
-    }
   }
 
   #total-amount {
     color: green;
+
+    .incoming-icon{
+      transform: rotateZ(-135deg);
+    }
   }
 
   #balance-amount {
