@@ -2,6 +2,7 @@ import ExpenseList from "./components/ExpenseList";
 import ExpenseSummary from "./components/ExpenseSummary";
 import Header from "./components/Header";
 import { ExpenseContextProvider } from "./components/context/ExpenseContext";
+import {useState} from 'react';
 
 const App = () => {
   const[isLoggedIn, setIsLoggedIn] = useState(true);
@@ -10,7 +11,7 @@ const App = () => {
     <ExpenseContextProvider>
       <div className="app">
         
-        {isLoggedIn &&<main>
+        {isLoggedIn && <main>
           <Header />
           <ExpenseList />
         </main>}
