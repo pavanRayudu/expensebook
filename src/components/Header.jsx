@@ -12,9 +12,9 @@ const Header = () => {
        const now = new Date().getHours();
        if(now >= 12 && now < 16) {
          state = "Good Afternoon";
-       } else if(now > 16 && now < 24) {
+       } else if(now > 16 && now < 22) {
          state = "Good Evening";
-       } else if(now > 22 || now< 5) {
+       } else if(now >= 22 || now< 5) {
          state = "Please sleep 🙏";
        }
     return state;
