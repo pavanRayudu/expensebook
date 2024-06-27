@@ -6,10 +6,13 @@ const ExpenseList = () => {
     const { expenseList, removeExpense } = useContext(ExpenseContext);
     const [expList, setExpList] = useState(expenseList);
     
-    useEffect(() => {
-        
-        setExpList(expenseList)
-    }, [expenseList])
+    // useEffect(() => {
+    //     setExpList(expenseList)
+    //     
+    // }, [expenseList])
+
+    // const ls = expenseList.filter((item) => item.productId === 889);
+    //     console.log(ls)
 
     const month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     
@@ -24,9 +27,9 @@ const ExpenseList = () => {
 
             <ul className='expense-list'>
                 {
-                    expList.map((expense) => {
+                    expenseList.map((expense) => {
                         return (expense.expenseId ?
-                            <li className='expense-item' key={expense.expenseId}>
+                            <li className='expense-item' key={`${expense.expenseId} + ${expense.expenseName}`}>
                                 <button className='delete-expense' onClick={() => handleDeletion(expense)}>
                                     <FaMinus />
                                 </button>
