@@ -4,12 +4,8 @@ import ExpenseContext from './context/ExpenseContext';
 
 const INITIAL_DATA = { expenseDate: "", expenseType: "salary", expenseName: "", expenseAmount: 0 }
 
-
-
 const AddMoney = ({ handleModal }) => {
-
     const { addExpense } = useContext(ExpenseContext);
-
     const [formData, setFormData] = useState(INITIAL_DATA)
 
     function handleChange(e) {
@@ -20,7 +16,6 @@ const AddMoney = ({ handleModal }) => {
     function getExpenseId() {
         return new Date().getMilliseconds();
     }
-
 
     function handleFormSubmit(e) {
         e.preventDefault();

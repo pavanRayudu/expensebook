@@ -57,6 +57,7 @@ body {
 
 .header .button-group button,
 .expense-form form button {
+  width: 150px;
   cursor: pointer;
   background: none;
   outline: none;
@@ -262,10 +263,18 @@ body {
 
   #amount-spent {
     color: red;
+
+    .outgoing-icon{
+      transform: rotateZ(135deg);
+    }
   }
 
   #total-amount {
     color: green;
+
+    .incoming-icon{
+      transform: rotateZ(-135deg);
+    }
   }
 
   #balance-amount {

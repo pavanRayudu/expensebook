@@ -2,12 +2,9 @@ import React, { useContext, useState } from 'react'
 import { IoIosClose } from "react-icons/io";
 import ExpenseContext from './context/ExpenseContext';
 
-const INITIAL_DATA = { expenseDate: "", expenseType: "food", expenseName: "", expenseAmount: 0,expenseFlag: false }
-
-
+const INITIAL_DATA = { expenseDate: "", expenseType: "food", expenseName: "", expenseAmount: 0 }
 
 const AddExpense = ({ handleModal }) => {
-
     const { addExpense } = useContext(ExpenseContext);
     const [formData, setFormData] = useState(INITIAL_DATA)
 
@@ -19,7 +16,6 @@ const AddExpense = ({ handleModal }) => {
     function getExpenseId() {
         return new Date().getMilliseconds();
     }
-
 
     function handleFormSubmit(e) {
         e.preventDefault();

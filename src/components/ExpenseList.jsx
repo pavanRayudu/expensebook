@@ -6,6 +6,7 @@ const ExpenseList = () => {
     const { expenseList, removeExpense } = useContext(ExpenseContext);
     const [expList, setExpList] = useState(expenseList);
     
+<<<<<<< HEAD
     // useEffect(() => {
     //     setExpList(expenseList)
     //     
@@ -13,6 +14,11 @@ const ExpenseList = () => {
 
     // const ls = expenseList.filter((item) => item.productId === 889);
     //     console.log(ls)
+=======
+    useEffect(() => {
+        setExpList(expenseList)
+    }, [expenseList])
+>>>>>>> a5c2c47ba60c69b8c3f7fcafb3f3a5f20dcc599d
 
     const month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     

@@ -26,14 +26,14 @@ const ExpenseSummary = () => {
         <div className='expense-summary'>
             <div className="expense-total">
                 <h2>
-                    <span id='amount-spent'><FaArrowAltCircleDown />{totalExpense}</span> -
+                    <span id='amount-spent'><FaArrowAltCircleDown className="outgoing-icon" />{totalExpense}</span> -
                     <span id='balance-amount'>{totalReceivedMoney - totalExpense}</span> -
-                    <span id='total-amount'>{totalReceivedMoney}<FaArrowAltCircleUp /></span>
+                    <span id='total-amount'>{totalReceivedMoney}<FaArrowAltCircleUp className="incoming-icon"/></span>
                 </h2>
             </div>
 
             <div className="expenses-filter">
-                <button onClick={handleClick}>filter <IoFilterSharp /></button>
+                <button onClick={handleClick} disabled> <IoFilterSharp /></button>
             </div>
 
         </div>
