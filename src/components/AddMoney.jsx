@@ -79,4 +79,4 @@ const AddMoney = ({ handleModal }) => {
     )
 }
 
-export default AddMoney
+export default AddMoney;

@@ -5,10 +5,13 @@
   --clr-text: rgb(235, 235, 235);
   --clr-expense-item-background: rgb(23, 23, 35);
   --clr-expense-date-background: rgb(11, 10, 10);
+  --clr-text-error : rgb(208, 0, 0);
 
   --font-size: 1rem;
 }
-
+html{
+  scroll-behavior: smooth;
+}
 
 *,
 *::after,
@@ -32,8 +35,8 @@ body {
 
 .element {
   width: 100%;
-  height: 100px;
-  background: linear-gradient(transparent, var(--clr-main-background));
+  height: 80px;
+  background: linear-gradient(transparent 10%, var(--clr-main-background) 90%);
   position: fixed;
   bottom: 0;
   left: 0;
@@ -76,7 +79,7 @@ body {
 }
 
 .add-expense-modal {
- 
+
   z-index: 999;
   background-color: var(--clr-main-background);
   display: flex;
@@ -233,7 +236,7 @@ body {
 .expense-amount {
   margin-right: 0.5rem;
   padding: 0.5rem;
-  color: red;
+  color: var(--clr-text-error);
 }
 
 #salary,
@@ -241,30 +244,64 @@ body {
   color: green;
 }
 
-.expense-summary {
+.expense-summary {}
+
+.wrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* background-color: red; */
+  /* background-color: var(--clr-text-error); */
   margin-top: 1rem;
 }
 
-.expense-summary .expense-total h2 {
+.sorting-section {
+  width: 100%;
+  height: 40px;
+  margin-top: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.sorting-section.true{
+  display: flex;
+}
+.sorting-section.false{
+  display: none;
+}
+
+.sorting-options {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.sorting-options select{
+  background-color: var(--clr-form-input-background);
+  color: var(--clr-text);
+  padding:0.5rem 2rem;
+  text-transform: capitalize;
+  border: none;
+  outline: none;
+  border-radius: 8px;
+}
+
+
+.wrapper .expense-total h2 {
   font-size: 1rem;
   display: flex;
   align-items: center;
   gap: 0.5rem;
 
-  span{
+  span {
     display: flex;
     align-items: center;
     gap: 0.3rem;
   }
 
   #amount-spent {
-    color: red;
+    color: var(--clr-text-error);
 
-    .outgoing-icon{
+    .outgoing-icon {
       transform: rotateZ(135deg);
     }
   }
@@ -272,7 +309,7 @@ body {
   #total-amount {
     color: green;
 
-    .incoming-icon{
+    .incoming-icon {
       transform: rotateZ(-135deg);
     }
   }
@@ -303,5 +340,4 @@ body {
   gap: 1rem;
   text-transform: capitalize;
   border-radius: 8px;
-
 }

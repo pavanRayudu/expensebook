@@ -1,33 +1,22 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext } from 'react'
 import ExpenseContext from './context/ExpenseContext';
 import { FaMinus } from "react-icons/fa";
 
 const ExpenseList = () => {
     const { expenseList, removeExpense } = useContext(ExpenseContext);
-    const [expList, setExpList] = useState(expenseList);
-    
-<<<<<<< HEAD
-    // useEffect(() => {
-    //     setExpList(expenseList)
-    //     
-    // }, [expenseList])
+    const month = [
+        "January", "February", "March",
+        "April", "May", "June", "July",
+        "August", "September", "October",
+        "November", "December"
+    ];
 
-    // const ls = expenseList.filter((item) => item.productId === 889);
-    //     console.log(ls)
-=======
-    useEffect(() => {
-        setExpList(expenseList)
-    }, [expenseList])
->>>>>>> a5c2c47ba60c69b8c3f7fcafb3f3a5f20dcc599d
-
-    const month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-    
-    function handleDeletion(expense){
-        if(confirm(`Are you sure to delete ${expense.expenseName}?`)){
+    function handleDeletion(expense) {
+        if (confirm(`Are you sure to delete ${expense.expenseName}?`)) {
             removeExpense(expense);
         }
     }
-    
+
     return (
         <div className='expense-container'>
 

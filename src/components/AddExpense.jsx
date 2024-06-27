@@ -14,7 +14,7 @@ const AddExpense = ({ handleModal }) => {
     }
 
     function getExpenseId() {
-        return new Date().getMilliseconds();
+        return Math.floor(Date.now());
     }
 
     function handleFormSubmit(e) {
