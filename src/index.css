@@ -1,16 +1,14 @@
 :root {
-  --clr-main-background: rgb(20, 20, 20);
-  --clr-modal-background: rgba(44, 44, 44);
-  --clr-form-input-background: rgb(39, 39, 39);
-  --clr-text: rgb(235, 235, 235);
-  --clr-expense-item-background: rgb(23, 23, 35);
-  --clr-expense-date-background: rgb(11, 10, 10);
-  --clr-text-red: rgb(208, 0, 0);
+  --clr-main-background: #161616;
+  --clr-section-background: #262626;
+  --clr-form-input-background: #272727;
+  --clr-expense-item-background: #1c1c1c;
+  --clr-expense-date-background: rgb(46, 46, 46);
+  --clr-text: rgb(229, 229, 229);
+  --clr-text-red: #bf0000;
   --clr-text-green: rgb(15, 120, 1);
   --clr-text-gray: rgb(164, 164, 164);
   --clr-button-backgroud: rgb(90, 90, 195);
-  --clr-section-background: rgb(31, 25, 37);
-
   --font-size: 1rem;
 }
 
@@ -33,13 +31,15 @@ body {
   font-size: var(--font-size);
 }
 
-button, a {
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); /* Removes highlight on tap for Safari */
-  outline: none; /* Removes default focus outline */
-  -moz-outline-style: none; /* Removes outline for Firefox */
+button,
+a {
+  -webkit-tap-highlight-color: var(--clr-main-background);
+  outline: none;
+  -moz-outline-style: none;
 }
 
-button:focus, a:focus {
+button:focus,
+a:focus {
   outline: none;
 }
 
@@ -50,7 +50,7 @@ button:focus, a:focus {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  height: 100vh; 
+  height: 100vh;
   height: calc(var(--vh, 1vh) * 100);
 }
 
@@ -185,7 +185,7 @@ section {
 }
 
 .expense-list::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
 
 .expense-item {
@@ -389,14 +389,12 @@ section {
   background-color: var(--clr-modal-background);
   color: var(--clr-text);
   padding: 1rem;
-  border: none;
+  border: 2px solid var(--clr-expense-date-background);
   font-size: 1.2rem;
   border-radius: 8px;
   letter-spacing: 0.2rem;
-}
-
-.login-page h2 {
-  color: var(--clr-text);
+  text-align: center;
+  font-weight: bold;
 }
 
 #login-button {

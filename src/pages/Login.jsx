@@ -17,9 +17,7 @@ const Login = () => {
   return (
     <div className="login-page">
       <form onSubmit={handleSubmit}>
-      <h2>Hi, Pavan</h2>
-
-        <input type="number" placeholder='Enter Code...' value={code} onChange={(e) => setCode(e.target.value)} />
+        <input type="number" placeholder='Enter Code' value={code} onChange={(e) => setCode(e.target.value)} />
         {/* <button type='submit' id='login-button'>OK</button> */}
       </form>
     </div>

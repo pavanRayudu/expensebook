@@ -60,7 +60,7 @@ const ExpenseList = () => {
                 <div className='expense-details'>
                   <div className="expense-date">
                     <span id='expense-date-month'>{
-                      month[new Date(expense.expenseDate).getUTCMonth()]
+                      month[new Date(expense.expenseDate).getUTCMonth()].substring(0, 3) 
                     }</span>
                     <span id='expense-date-day'>{new Date(expense.expenseDate).getDate()}</span>
                     <span id='expense-date-year'>{new Date(expense.expenseDate).getFullYear()}</span>
