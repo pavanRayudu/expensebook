@@ -95,7 +95,7 @@ section {
   display: flex;
   font-size: 0.8rem;
   color: var(--clr-text-gray);
-  opacity: 0.5;
+  opacity: 0.2;
 }
 
 .income-flow {
