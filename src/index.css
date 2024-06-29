@@ -33,6 +33,16 @@ body {
   font-size: var(--font-size);
 }
 
+button, a {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); /* Removes highlight on tap for Safari */
+  outline: none; /* Removes default focus outline */
+  -moz-outline-style: none; /* Removes outline for Firefox */
+}
+
+button:focus, a:focus {
+  outline: none;
+}
+
 .app {
   margin-inline: 0.5rem;
   padding-block: 0.5rem;
@@ -41,7 +51,7 @@ body {
   flex-direction: column;
   /* background-color: gray; */
   gap: 0.5rem;
-  height: 92vh;
+  height: 93vh;
 }
 
 section {
@@ -95,7 +105,7 @@ section {
   display: flex;
   font-size: 0.8rem;
   color: var(--clr-text-gray);
-  opacity: 0.5;
+  opacity: 0.2;
 }
 
 .income-flow {
@@ -172,6 +182,10 @@ section {
   display: flex;
   flex-direction: column;
   gap: 0.3rem;
+}
+
+.expense-list::-webkit-scrollbar {
+    display: none;
 }
 
 .expense-item {
@@ -268,7 +282,6 @@ section {
 #expense-actions {
   display: flex;
   justify-content: space-around;
-  background-color: none;
   padding-block: 0.3rem;
 
 }
