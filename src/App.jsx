@@ -1,22 +1,22 @@
-import ExpenseList from "./components/ExpenseList";
-import ExpenseSummary from "./components/ExpenseSummary";
-import Header from "./components/Header";
 import { ExpenseContextProvider } from "./components/context/ExpenseContext";
-import {useState} from 'react';
+import { useState } from 'react';
+
+import ExpenseList from "./components/sections/ExpenseList";
+import AmountStatiscs from "./components/sections/AmountStatistics";
+import ExpenseActions from "./components/sections/ExpenseActions";
+import InfoSection from "./components/sections/InfoSection";
 
 const App = () => {
-  const[isLoggedIn, setIsLoggedIn] = useState(true);
-  
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
+
   return (
     <ExpenseContextProvider>
-      <div className="app">
-        
-        {isLoggedIn && <main>
-          <Header />
-          <ExpenseList />
-        </main>}
-        <div className="element"></div>
-      </div>
+      <main className="app">
+        <InfoSection />
+        <AmountStatiscs />
+        <ExpenseList />
+        <ExpenseActions />
+      </main>
     </ExpenseContextProvider>
   )
 }

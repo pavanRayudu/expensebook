@@ -5,11 +5,16 @@
   --clr-text: rgb(235, 235, 235);
   --clr-expense-item-background: rgb(23, 23, 35);
   --clr-expense-date-background: rgb(11, 10, 10);
-  --clr-text-error : rgb(208, 0, 0);
+  --clr-text-red: rgb(208, 0, 0);
+  --clr-text-green: rgb(15, 120, 1);
+  --clr-text-gray: rgb(164, 164, 164);
+  --clr-button-backgroud: rgb(90, 90, 195);
+  --clr-section-background: rgb(31, 25, 37);
 
   --font-size: 1rem;
 }
-html{
+
+html {
   scroll-behavior: smooth;
 }
 
@@ -29,57 +34,264 @@ body {
 }
 
 .app {
-  margin-inline: 1rem;
+  margin-inline: 0.5rem;
+  padding-block: 0.5rem;
   position: relative;
-}
-
-.element {
-  width: 100%;
-  height: 80px;
-  background: linear-gradient(transparent 10%, var(--clr-main-background) 90%);
-  position: fixed;
-  bottom: 0;
-  left: 0;
-}
-
-.header {
-  padding-block: 2rem 1rem;
-  background-color: var(--clr-main-background);
-  text-align: center;
-  position: sticky;
-  top: 0;
-  z-index: 999;
-
-}
-
-.header .button-group {
   display: flex;
+  flex-direction: column;
+  /* background-color: gray; */
+  gap: 0.5rem;
+  height: 100vh;
+}
+
+section {
+  background-color: var(--clr-section-background);
+  padding: 1rem 0.5rem;
+  border-radius: 8px;
+}
+
+#expense-actions,
+#amount-stats,
+#info-section {
+  flex: 1;
+}
+
+#expenses-list {
+  flex: 16;
+}
+
+
+/**************** Info section styles *****************/
+
+#info-section {
+  display: flex;
+  justify-content: space-between;
+}
+
+#logout-button {
+  cursor: pointer;
+  background: none;
+  border: none;
+  outline: none;
+  display: flex;
+  align-items: center;
   justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  font-size: 1.5rem;
+  color: var(--clr-text);
+}
+
+/**************** Expense-stats section styles *****************/
+#amount-stats {}
+
+#amount-stats .amount-stats-figures {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.amount-stats-figures .element {
+  display: flex;
+  font-size: 0.8rem;
+  color: var(--clr-text-gray);
+  opacity: 0.5;
+}
+
+.income-flow {
+  font-size: 1.5rem;
+  color: var(--clr-text-red);
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+
+  #icon-outgoing {
+    transform: rotateZ(-45deg);
+  }
+
+  #icon-incoming {
+    transform: rotateZ(45deg);
+  }
+}
+
+#total-incoming-amount {
+  color: var(--clr-text-green);
+}
+
+#balance-amount {
+  font-size: 1rem;
+  color: var(--clr-text-gray);
+}
+
+/*******************************************************************/
+#expenses-list {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
   gap: 0.5rem;
 }
 
-.header .button-group button,
-.expense-form form button {
-  width: 150px;
-  cursor: pointer;
-  background: none;
-  outline: none;
-  border: none;
-  color: inherit;
-  padding: 1rem 2rem;
-  margin-top: 1rem;
-  background-color: rgb(78, 78, 161);
-  font-weight: bold;
-  border-radius: 1.5rem;
+#filters-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* padding-block: 0.5rem; */
+  font-size: 1.5rem;
 }
 
-#add-expense-btn {
+#filter-button {
+  width: 2rem;
+  height: 1.5rem;
+  font-size: 1.5rem;
+  background: none;
+  color: inherit;
+  border: none;
+  outline: none;
+}
+
+#filters-section .filters {
+  width: 100%;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.filters select {
+  width: 100%;
+  background-color: var(--clr-section-background);
+  border-radius: 8px;
+  color: var(--clr-text);
+  opacity: 0.7;
+  padding: 0.3rem;
+
+}
+
+.expense-list {
+  padding-block: 0.5rem;
+  height: 100%;
+  overflow: scroll;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.expense-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--clr-expense-item-background);
+  border-radius: 8px;
+  gap: 1rem;
+  position: relative;
+}
+
+.delete-expense {
+  position: absolute;
+  top: -4px;
+  right: 0;
+  color: rgb(158, 158, 158);
+  background: rgb(71, 71, 71);
+  border-radius: 50%;
+  width: 1rem;
+  height: 1rem;
+  outline: none;
+  border: none;
+  font-size: 8px;
+}
+
+.expense-item .expense-details {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: hidden;
+
+}
+
+.expense-item .expense-details .expense-date {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--clr-expense-date-background);
+  padding: 0.5rem;
+  margin: 5px;
+  border-radius: 4px;
+}
+
+#expense-date-day {
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+#expense-date-year,
+#expense-date-month {
+  font-size: 0.7rem;
+  opacity: 0.8;
+  font-weight: lighter;
+}
+
+.expense-details .expense-description {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding-block: 0rem;
+  overflow: hidden;
+}
+
+.expense-description .expense-name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.expense-description .expense-category {
+  font-size: 0.8rem;
+  text-transform: capitalize;
+  background-color: rgb(40, 40, 40);
+  width: fit-content;
+  padding: 2px 6px;
+  border-radius: 4px;
+  opacity: 0.5;
+}
+
+.expense-amount {
+  margin-right: 0.5rem;
+  padding: 0.5rem;
+  color: var(--clr-text-red);
+  font-weight: normal;
+}
+
+#salary,
+#person {
+  color: var(--clr-text-green);
+}
+
+/*********************** Expense Action styles *******************************************/
+
+#expense-actions {
+  display: flex;
+  justify-content: space-around;
+}
+
+#expense-actions button {
+  width: 150px;
+  background-color: var(--clr-button-backgroud);
+  padding: 0.8rem 1rem;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  color: var(--clr-text);
+  border-radius: 24px;
+}
+
+#expense-actions #add-money {
   background-color: white;
   color: black;
 }
 
-.add-expense-modal {
 
+
+/******************** Expense Form ********************************/
+
+.add-expense-modal {
   z-index: 999;
   background-color: var(--clr-main-background);
   display: flex;
@@ -141,203 +353,36 @@ body {
   margin-top: 2rem;
 }
 
-.expense-container {
-  position: relative;
-  overflow: scroll;
+/********************Login Page************************/
 
+.login-page {
+  height: 500px;
+  display: grid;
 }
 
-.expense-container .expense-list {
-  display: flex;
-  flex-direction: column-reverse;
-  gap: 0.5rem;
-  margin-block: 0.5rem 5rem;
-}
-
-.expense-item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: var(--clr-expense-item-background);
-  border-radius: 8px;
-  gap: 1rem;
-  position: relative;
-}
-
-.delete-expense {
-  position: absolute;
-  top: -4px;
-  right: 0;
-  color: rgb(158, 158, 158);
-  background: rgb(71, 71, 71);
-  border-radius: 50%;
-  width: 1rem;
-  height: 1rem;
-  outline: none;
-  border: none;
-  font-size: 8px;
-}
-
-.expense-item .expense-details {
-  display: flex;
-  gap: 0.5rem;
-  overflow-x: hidden;
-
-}
-
-.expense-item .expense-details .expense-date {
+.login-page form {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  background-color: var(--clr-expense-date-background);
-  padding: 0.5rem;
-  margin: 5px;
-  border-radius: 4px;
-}
-
-#expense-date-day {
-  font-weight: bold;
-  font-size: 1rem;
-
-
-}
-
-#expense-date-year,
-#expense-date-month {
-  font-size: 0.7rem;
-  opacity: 0.8;
-  font-weight: lighter;
-}
-
-.expense-details .expense-description {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  padding-block: 0rem;
-  overflow: hidden;
-}
-
-.expense-description .expense-name {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.expense-description .expense-category {
-  font-size: 0.8rem;
-  text-transform: capitalize;
-  background-color: rgb(40, 40, 40);
-  width: fit-content;
-  padding: 2px 6px;
-  border-radius: 4px;
-  opacity: 0.5;
-}
-
-.expense-amount {
-  margin-right: 0.5rem;
-  padding: 0.5rem;
-  color: var(--clr-text-error);
-}
-
-#salary,
-#person {
-  color: green;
-}
-
-.expense-summary {}
-
-.wrapper {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  /* background-color: var(--clr-text-error); */
-  margin-top: 1rem;
-}
-
-.sorting-section {
-  width: 100%;
-  height: 40px;
-  margin-top: 0.5rem;
-  display: flex;
-  align-items: center;
   justify-content: center;
-}
-.sorting-section.true{
-  display: flex;
-}
-.sorting-section.false{
-  display: none;
-}
-
-.sorting-options {
-  list-style: none;
-  display: flex;
-  justify-content: space-between;
+  align-items: center;
   gap: 1rem;
 }
-.sorting-options select{
-  background-color: var(--clr-form-input-background);
+
+.login-page form button,
+.login-page form input {
+  background-color: var(--clr-modal-background);
   color: var(--clr-text);
-  padding:0.5rem 2rem;
-  text-transform: capitalize;
+  padding: 1rem;
   border: none;
-  outline: none;
+  font-size: 1.2rem;
   border-radius: 8px;
+  letter-spacing: 0.2rem;
 }
 
-
-.wrapper .expense-total h2 {
-  font-size: 1rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-
-  span {
-    display: flex;
-    align-items: center;
-    gap: 0.3rem;
-  }
-
-  #amount-spent {
-    color: var(--clr-text-error);
-
-    .outgoing-icon {
-      transform: rotateZ(135deg);
-    }
-  }
-
-  #total-amount {
-    color: green;
-
-    .incoming-icon {
-      transform: rotateZ(-135deg);
-    }
-  }
-
-  #balance-amount {
-    color: gray;
-    font-size: 0.8rem;
-  }
+.login-page h2 {
+  color: var(--clr-text);
 }
 
-.expense-summary .balance-amount {
-  color: rgb(105, 105, 105);
-  font-size: 1rem;
-}
-
-.expenses-filter {
-  /* background-color: antiquewhite; */
-}
-
-.expenses-filter button {
-  background: none;
-  outline: none;
-  border: 1px solid rgb(105, 105, 105);
-  padding: 0.5rem 1rem;
-  color: inherit;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  text-transform: capitalize;
-  border-radius: 8px;
+#login-button {
+  display: none;
 }

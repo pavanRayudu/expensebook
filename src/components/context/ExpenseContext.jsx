@@ -11,6 +11,9 @@ export function ExpenseContextProvider({ children }) {
     const [expenseList2, setExpenseList2] = useState([]);
     const [error, setError] = useState("");
 
+    const expenseTypes = Array.from(new Set(expenseList.map(expense => expense.expenseType)))
+
+
     useEffect(() => {
         fetchData()
     }, [])
@@ -18,7 +21,7 @@ export function ExpenseContextProvider({ children }) {
 
     //fetching the expenses data from database
     async function fetchData() {
-        try{
+        try {
             const expenseRef = ref(firebaseDb, 'expenses');
             await get(expenseRef).then((snapshot) => {
                 if (snapshot.exists()) {
@@ -28,7 +31,7 @@ export function ExpenseContextProvider({ children }) {
                     setExpenseList2(expenseArray)
                 }
             })
-        } catch(err) {
+        } catch (err) {
             console.log(err.message)
         }
     }
@@ -67,37 +70,46 @@ export function ExpenseContextProvider({ children }) {
         const dateA = new Date(a.expenseDate).getTime();
         const dateB = new Date(b.expenseDate).getTime();
 
-        if (dateA < dateB) {
+        if (dateA > dateB) {
             return -1;
         }
-        if (dateA > dateB) {
+        if (dateA < dateB) {
             return 1;
         }
         return 0;
     });
 
 
-    function filterExpensesByCategory(type) {
-        if (type === "category") {
-            setExpenseList2(expenseList)
+    function filterExpenses(filters) {
+        console.log(filters)
+        let filterByCategory = [];
+        let filterByMonth = [];
+        if ((filters.expenseType) === "Category") {
+            filterByCategory = [...expenseList];
         } else {
-            const filteredList = expenseList.filter(expense =>
-                expense.expenseType === type)
-            setExpenseList2(filteredList)
+            filterByCategory = expenseList.filter((exp) => (
+                exp.expenseType === filters.expenseType
+            ))
         }
-    }
-    function filterExpensesByMonth(type) {
-        if (type === "month") {
-            setExpenseList2(expenseList)
+
+        if ((filters.expenseMonth) === "month") {
+            filterByMonth = [...filterByCategory];
+        } else {
+            filterByMonth = filterByCategory.filter((exp) => (
+                getMonth(exp.expenseDate) === filters.expenseMonth
+            ))
         }
-        else {
-            const filteredList = expenseList.filter(expense =>
-                getMonth(expense.expenseDate) === type)
-            setExpenseList2(filteredList)
-        }
+        setExpenseList2(filterByMonth)
     }
 
-    const context = { expenseList: expenseList2, addExpense, removeExpense, filterExpensesByMonth, filterExpensesByCategory };
+
+    const context = {
+        expenseList: expenseList2,
+        addExpense,
+        removeExpense,
+        filterExpenses,
+        expenseTypes
+    };
 
     return <ExpenseContext.Provider value={context}>{children}</ExpenseContext.Provider>
 }

@@ -4,7 +4,7 @@ import ExpenseContext from './context/ExpenseContext';
 
 const INITIAL_DATA = { expenseDate: "", expenseType: "food", expenseName: "", expenseAmount: 0 }
 
-const AddExpense = ({ handleModal }) => {
+const AddExpense = ({ closeModal }) => {
     const { addExpense } = useContext(ExpenseContext);
     const [formData, setFormData] = useState(INITIAL_DATA)
 
@@ -21,13 +21,13 @@ const AddExpense = ({ handleModal }) => {
         e.preventDefault();
         addExpense({ expenseId: getExpenseId(), ...formData })
         setFormData(INITIAL_DATA)
-        handleModal(false)
+        closeModal(false)
     }
 
     return (
         <div className='add-expense-modal'>
             <div className='expense-form'>
-                <IoIosClose id='close-btn' onClick={() => handleModal(false)} />
+                <IoIosClose id='close-btn' onClick={() => closeModal(false)} />
                 <form onSubmit={handleFormSubmit}>
                     <div className="input-field">
                         <label htmlFor="expense-type">Expense type: </label>
