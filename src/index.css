@@ -55,9 +55,14 @@ a:focus {
 }
 
 section {
-  background-color: var(--clr-section-background);
   padding: 1rem 0.5rem;
   border-radius: 8px;
+}
+
+#amount-stats,
+#info-section,
+#expense-list{
+background-color: var(--clr-section-background);
 }
 
 #expense-actions,
@@ -283,8 +288,6 @@ section {
   display: flex;
   justify-content: space-around;
   padding-block: 0.3rem;
-  background-color: none;
-
 }
 
 #expense-actions button {
