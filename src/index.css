@@ -268,6 +268,7 @@ section {
 #expense-actions {
   display: flex;
   justify-content: space-around;
+  background-color: none;
   padding-block: 0.3rem;
 
 }
