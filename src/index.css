@@ -41,7 +41,7 @@ body {
   flex-direction: column;
   /* background-color: gray; */
   gap: 0.5rem;
-  height: 95vh;
+  height: 92vh;
 }
 
 section {
@@ -268,12 +268,14 @@ section {
 #expense-actions {
   display: flex;
   justify-content: space-around;
+  padding-block: 0.3rem;
+
 }
 
 #expense-actions button {
-  width: 150px;
+  width: 160px;
   background-color: var(--clr-button-backgroud);
-  padding: 0.8rem 1rem;
+  padding: 1rem;
   outline: none;
   border: none;
   cursor: pointer;
