@@ -8,5 +8,5 @@ export const ProtectedRoute = ({ children }) => {
     if (!user) {
         return <Navigate to='/login' />
     }
-    return (user==='2111') ? children: <Navigate to='/login' />;
+    return (user===2111) ? children: <Navigate to='/login' />;
 }
