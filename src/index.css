@@ -49,9 +49,9 @@ button:focus, a:focus {
   position: relative;
   display: flex;
   flex-direction: column;
-  /* background-color: gray; */
   gap: 0.5rem;
-  height: 93vh;
+  height: 100vh; 
+  height: calc(var(--vh, 1vh) * 100);
 }
 
 section {
