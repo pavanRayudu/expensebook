@@ -33,6 +33,16 @@ body {
   font-size: var(--font-size);
 }
 
+button, a {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); /* Removes highlight on tap for Safari */
+  outline: none; /* Removes default focus outline */
+  -moz-outline-style: none; /* Removes outline for Firefox */
+}
+
+button:focus, a:focus {
+  outline: none;
+}
+
 .app {
   margin-inline: 0.5rem;
   padding-block: 0.5rem;
