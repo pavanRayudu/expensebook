@@ -8,7 +8,7 @@ const Login = () => {
   function handleSubmit(e) {
     e.preventDefault();
     console.log(typeof code)
-    if (Number(code) === 235465) {
+    if (Number(code) === 7659) {
       login({ code })
     } else {
       alert("Invalid Code !")
