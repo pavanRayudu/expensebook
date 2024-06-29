@@ -41,7 +41,7 @@ body {
   flex-direction: column;
   /* background-color: gray; */
   gap: 0.5rem;
-  height: 100vh;
+  height: 90vh;
 }
 
 section {
