@@ -61,7 +61,7 @@ section {
 
 #amount-stats,
 #info-section,
-#expense-list{
+#expenses-list{
 background-color: var(--clr-section-background);
 }
 
