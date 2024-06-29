@@ -10,14 +10,11 @@ export function ExpenseContextProvider({ children }) {
     const [expenseList, setExpenseList] = useState([]);
     const [expenseList2, setExpenseList2] = useState([]);
     const [error, setError] = useState("");
-
     const expenseTypes = Array.from(new Set(expenseList.map(expense => expense.expenseType)))
-
 
     useEffect(() => {
         fetchData()
     }, [])
-
 
     //fetching the expenses data from database
     async function fetchData() {
@@ -101,7 +98,6 @@ export function ExpenseContextProvider({ children }) {
         }
         setExpenseList2(filterByMonth)
     }
-
 
     const context = {
         expenseList: expenseList2,
