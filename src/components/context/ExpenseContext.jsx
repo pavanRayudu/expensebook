@@ -82,7 +82,10 @@ export function ExpenseContextProvider({ children }) {
         let filterByCategory = [];
         let filterByMonth = [];
         
-        
+        if(filters.expenseType === "Category" && filters.expenseMonth === "month"){
+            setExpenseList2(expenseList)
+            return;
+        }
         
         if (filters.expenseType === "Category") {
             filterByCategory = [...expenseList];
@@ -92,7 +95,7 @@ export function ExpenseContextProvider({ children }) {
             ))
         }
 
-        if ((filters.expenseMonth) === "month") {
+        if (filters.expenseMonth === "month") {
             filterByMonth = [...filterByCategory];
         } else {
             filterByMonth = filterByCategory.filter((exp) => (
