@@ -176,6 +176,9 @@ background-color: var(--clr-section-background);
   padding: 0.3rem;
   text-align: center;
 }
+.filters select:focus{
+  border: 2px solid var(--clr-button-backgroud);
+}
 
 .expense-list {
   padding-block: 0.5rem;
