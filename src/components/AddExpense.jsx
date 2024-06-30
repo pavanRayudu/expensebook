@@ -41,6 +41,7 @@ const AddExpense = ({ closeModal }) => {
                             <option value="food">Food</option>
                             <option value="groceries">Groceries</option>
                             <option value="investment">Investment</option>
+                            <option value="bill">Bill</option>
                             <option value="others">Others</option>
                         </select>
                     </div>
