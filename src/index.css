@@ -107,7 +107,7 @@ background-color: var(--clr-section-background);
   display: flex;
   font-size: 0.8rem;
   color: var(--clr-text-gray);
-  opacity: 0.2;
+  opacity: 0.1;
 }
 
 .income-flow {
