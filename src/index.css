@@ -175,6 +175,7 @@ background-color: var(--clr-section-background);
   opacity: 0.7;
   padding: 0.3rem;
   text-align: center;
+  outline: none;
 }
 .filters select:focus{
   border: 2px solid var(--clr-button-backgroud);
