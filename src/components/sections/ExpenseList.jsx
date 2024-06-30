@@ -33,7 +33,7 @@ const ExpenseList = () => {
       <div id="filters-section">
         <div className="filters">
           <select name="expenseType" id="expenseType" value={filterOptions.expenseType} onChange={handleChange}>
-            <option value="category">Category</option>
+            <option value="Category">Category</option>
             {
               expenseTypes.map(type => <option key={type} value={type}>{type}</option>)
             }
