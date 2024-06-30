@@ -221,7 +221,7 @@ border: 2px solid rgba(255,255,255,0.1);
 
 .expense-item .expense-details {
   display: flex;
-  gap: 0.5rem;
+  gap: 0.4rem;
   overflow-x: hidden;
 }
 
@@ -259,6 +259,7 @@ border: 2px solid rgba(255,255,255,0.1);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  padding-left: 6px;
 }
 
 .expense-description .expense-category {
