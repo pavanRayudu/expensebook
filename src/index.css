@@ -259,7 +259,6 @@ border: 2px solid rgba(255,255,255,0.1);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  padding-left: 6px;
 }
 
 .expense-description .expense-category {
