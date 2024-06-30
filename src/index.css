@@ -250,8 +250,8 @@ border: 2px solid rgba(255,255,255,0.1);
 .expense-details .expense-description {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  padding-block: 0rem;
+  justify-content: center;
+  gap: 0.5rem;
   overflow: hidden;
 }
 
@@ -259,7 +259,6 @@ border: 2px solid rgba(255,255,255,0.1);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  padding-block-end: 8px;
 }
 
 .expense-description .expense-category {
