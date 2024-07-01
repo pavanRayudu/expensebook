@@ -31,6 +31,7 @@ const ExpenseList = () => {
 
   function handleClick() {
     setShowFilters(prev => !prev)
+    setfilterOptions(INITIAL_VALUES)
     filterExpenses(INITIAL_VALUES)
 
   }
