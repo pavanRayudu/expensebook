@@ -5,10 +5,13 @@
   --clr-expense-item-background: #1c1c1c;
   --clr-expense-date-background: rgb(46, 46, 46);
   --clr-text: rgb(229, 229, 229);
-  --clr-text-red: #bf0000;
-  --clr-text-green: rgb(15, 120, 1);
+
+  --clr-text-red: #9d1c1e;
+  --clr-text-green: #1c9d4e;
   --clr-text-gray: rgb(164, 164, 164);
-  --clr-button-backgroud: rgb(90, 90, 195);
+  --clr-text-yellow: #9d8e1c;
+
+  --clr-button-backgroud: #1c519d;
   --font-size: 1rem;
 }
 
@@ -29,6 +32,9 @@ body {
   background-color: var(--clr-main-background);
   color: var(--clr-text);
   font-size: var(--font-size);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 button,
@@ -44,7 +50,8 @@ a:focus {
 }
 
 .app {
-  margin-inline: 0.5rem;
+  max-width: 500px;
+  margin-inline: 0.75rem;
   padding-block: 0.5rem;
   position: relative;
   display: flex;
@@ -54,6 +61,7 @@ a:focus {
   height: calc(var(--vh, 1vh) * 100);
 }
 
+
 section {
   padding: 1rem 0.5rem;
   border-radius: 8px;
@@ -61,8 +69,8 @@ section {
 
 #amount-stats,
 #info-section,
-#expenses-list{
-background-color: var(--clr-section-background);
+#expenses-list {
+  background-color: var(--clr-section-background);
 }
 
 #expense-actions,
@@ -79,6 +87,8 @@ background-color: var(--clr-section-background);
 #info-section {
   display: flex;
   justify-content: space-between;
+}
+#intro h1{
 }
 
 #logout-button {
@@ -97,6 +107,7 @@ background-color: var(--clr-section-background);
 
 /**************** Expense-stats section styles *****************/
 #amount-stats {}
+
 #amount-stats .amount-stats-figures {
   display: flex;
   justify-content: space-between;
@@ -145,27 +156,45 @@ background-color: var(--clr-section-background);
 
 #filters-section {
   display: flex;
+  /* flex-direction: column; */
   justify-content: space-between;
   align-items: center;
-  /* padding-block: 0.5rem; */
+  gap: 1rem;
   font-size: 1.5rem;
+ 
+  position: relative;
+
 }
 
 #filter-button {
   width: 2rem;
   height: 1.5rem;
-  font-size: 1.5rem;
+  font-size: 1rem;
   background: none;
   color: inherit;
   border: none;
   outline: none;
+  display: flex;
+  align-items: center;
+ 
+  color: var(--clr-text);
+}
+#filter-button span{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  padding: 4px 8px;
+  border-radius: 8px;
 }
 
 #filters-section .filters {
+  overflow: hidden;
   width: 100%;
-  display: flex;
   gap: 0.5rem;
+  transition: display 2s ease-in-out;
 }
+
 
 .filters select {
   width: 100%;
@@ -176,9 +205,10 @@ background-color: var(--clr-section-background);
   padding: 0.5rem;
   text-align: center;
   outline: none;
-border: 2px solid rgba(255,255,255,0.1);
+  border: 2px solid rgba(255, 255, 255, 0.1);
 }
-.filters select:focus{
+
+.filters select:focus {
   border: 2px solid var(--clr-button-backgroud);
 }
 

@@ -76,9 +76,7 @@ export function ExpenseContextProvider({ children }) {
         return 0;
     });
 
-
     function filterExpenses(filters) {
-        console.log(filters)
         let filterByCategory = [];
         let filterByMonth = [];
         

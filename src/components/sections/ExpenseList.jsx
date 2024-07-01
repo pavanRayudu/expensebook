@@ -2,7 +2,8 @@ import React, { useContext, useState } from 'react'
 import ExpenseContext from '../context/ExpenseContext'
 import { FaMinus } from "react-icons/fa";
 import { month } from '../helpers/getMonth'
-import { BsFilterRight } from "react-icons/bs";
+import { IoFilter } from "react-icons/io5";
+import { ImCancelCircle } from "react-icons/im";
 
 const INITIAL_VALUES = {
   expenseType: "Category",
@@ -11,8 +12,9 @@ const INITIAL_VALUES = {
 
 
 const ExpenseList = () => {
-  const { expenseList, removeExpense, filterExpenses,expenseTypes } = useContext(ExpenseContext);
+  const { expenseList, removeExpense, filterExpenses, expenseTypes } = useContext(ExpenseContext);
   const [filterOptions, setfilterOptions] = useState(INITIAL_VALUES);
+  const [showFilters, setShowFilters] = useState(false)
 
   function handleDeletion(expense) {
     if (confirm(`Are you sure to delete ${expense.expenseName}?`)) {
@@ -27,11 +29,17 @@ const ExpenseList = () => {
     filterExpenses(newObject)
   }
 
+  function handleClick() {
+    setShowFilters(prev => !prev)
+    filterExpenses(INITIAL_VALUES)
+
+  }
 
   return (
     <section id='expenses-list'>
       <div id="filters-section">
-        <div className="filters">
+
+        <div className="filters" style={{ display: showFilters ? `flex` : `none` }}>
           <select name="expenseType" id="expenseType" value={filterOptions.expenseType} onChange={handleChange}>
             <option value="Category">Category</option>
             {
@@ -44,10 +52,8 @@ const ExpenseList = () => {
               month.map((month) => <option key={month} value={month}>{month}</option>)
             }
           </select>
-
         </div>
-        {/* <button id='filter-button'><BsFilterRight /></button> */}
-
+        <button id='filter-button' onClick={handleClick}>{!showFilters ? <span>Filter <IoFilter /> </span> : <ImCancelCircle />}</button>
       </div>
       <ul className="expense-list">
         {
@@ -60,7 +66,7 @@ const ExpenseList = () => {
                 <div className='expense-details'>
                   <div className="expense-date">
                     <span id='expense-date-month'>{
-                      month[new Date(expense.expenseDate).getUTCMonth()].substring(0, 3) 
+                      month[new Date(expense.expenseDate).getUTCMonth()].substring(0, 3)
                     }</span>
                     <span id='expense-date-day'>{new Date(expense.expenseDate).getDate()}</span>
                     <span id='expense-date-year'>{new Date(expense.expenseDate).getFullYear()}</span>
