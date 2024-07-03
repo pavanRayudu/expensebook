@@ -1,10 +1,11 @@
 import React, { useContext } from 'react'
 import { Navigate } from 'react-router-dom';
-import { user } from './helpers/useLocalStorage';
+import { auth } from '../dbConfig';
 
 export const ProtectedRoute = ({ children }) => {
+    const user = auth.currentUser;
 
-    if (user === null) {
+    if (!user) {
         return <Navigate to='/login' />
     }
     return children;

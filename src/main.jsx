@@ -9,10 +9,15 @@ import { ProtectedRoute } from './components/ProtectedRoute.jsx'
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter>
-      <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route path="/" element={<ProtectedRoute><App /></ProtectedRoute>} />
-      </Routes>
+     
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/" element={
+            <ProtectedRoute>
+              <App />
+            </ProtectedRoute>} />
+        </Routes>
+     
     </BrowserRouter>
   </React.StrictMode>,
 )

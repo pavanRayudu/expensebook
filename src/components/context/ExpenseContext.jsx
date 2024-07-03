@@ -2,8 +2,7 @@ import { createContext, useEffect, useState } from "react";
 import { get, ref, push, remove, set, query, equalTo, orderByChild } from 'firebase/database'
 import { firebaseDb } from "../../dbConfig";
 import { getMonth } from '../helpers/getMonth'
-import { user } from "../helpers/useLocalStorage";
-
+import { auth } from "../../dbConfig";
 const ExpenseContext = createContext(null);
 
 export function ExpenseContextProvider({ children }) {
@@ -13,26 +12,35 @@ export function ExpenseContextProvider({ children }) {
     const [error, setError] = useState("");
     const expenseTypes = Array.from(new Set(expenseList.map(expense => expense.expenseType)))
 
+
     useEffect(() => {
         fetchData()
     }, [])
 
+
+
     //fetching the expenses data from database
     async function fetchData() {
-        try {
-            const expenseRef = ref(firebaseDb, 'expenses');
-            const propertyQuery = query(expenseRef, orderByChild("createdBy"), equalTo(user));
-            await get(propertyQuery).then((snapshot) => {
-                if (snapshot.exists()) {
-                    setData(snapshot.val())
-                    const expenseArray = Object.values(snapshot.val())
-                    setExpenseList(expenseArray)
-                    setExpenseList2(expenseArray)
-                }
-            })
-        } catch (err) {
-            console.log(err.message)
+        const user = auth.currentUser;
+
+        if (user) {
+            try {
+                const expenseRef = ref(firebaseDb, 'expenses');
+                const propertyQuery = query(expenseRef, orderByChild("createdBy"), equalTo(user.email));
+                await get(propertyQuery).then((snapshot) => {
+                    if (snapshot.exists()) {
+                        setData(snapshot.val())
+                        const expenseArray = Object.values(snapshot.val())
+                        setExpenseList(expenseArray)
+                        setExpenseList2(expenseArray)
+                    }
+                })
+            } catch (err) {
+                console.log(err.message)
+            }
+
         }
+
     }
 
     // Adding new expense
@@ -106,7 +114,7 @@ export function ExpenseContextProvider({ children }) {
         addExpense,
         removeExpense,
         filterExpenses,
-        expenseTypes
+        expenseTypes,
     };
 
     return <ExpenseContext.Provider value={context}>{children}</ExpenseContext.Provider>

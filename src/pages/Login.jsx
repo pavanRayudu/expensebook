@@ -1,10 +1,12 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { useNavigate } from "react-router-dom";
 import { auth } from '../dbConfig';
 import { signInWithEmailAndPassword } from 'firebase/auth'
+import AuthContext from '../components/context/AuthContext';
 
 const Login = () => {
-  const[error, setError] = useState("")
+  const [error, setError] = useState("")
+  const { updateUser } = useContext(AuthContext);
   const [loginCredentials, setLoginCredentials] = useState({
     email: "",
     password: "",
@@ -20,7 +22,6 @@ const Login = () => {
       const user = userCredential.user;
       console.log('User signed up:', user.email);
       window.localStorage.setItem('data', JSON.stringify(user.email));
-
       navigate('/')
     } catch (error) {
       setError("Invalid email or Password")
