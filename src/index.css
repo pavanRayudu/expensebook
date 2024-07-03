@@ -407,6 +407,8 @@ section {
 .login-page {
   height: 100vh;
   display: grid;
+  height: calc(var(--vh, 1vh) * 100);
+
   place-content: center;
   /* background-color: red; */
 }
