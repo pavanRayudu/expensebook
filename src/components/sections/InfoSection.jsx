@@ -1,13 +1,17 @@
 import React, { useContext } from 'react'
 import { AiOutlineLogout } from "react-icons/ai";
-import AuthContext from '../context/AuthContext';
 import { getDayState } from '../helpers/getDayState';
+import { auth } from '../../dbConfig';
+import { signOut } from 'firebase/auth';
+import { useNavigate } from 'react-router-dom';
+
 
 const InfoSection = () => {
-    const { logout } = useContext(AuthContext);
+    const navigate = useNavigate()
 
-    function handleLogout(e) {
-        logout()
+    async function handleLogout() {
+        await signOut(auth)
+        navigate('/login')
     }
 
     return (

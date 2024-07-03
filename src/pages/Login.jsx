@@ -1,25 +1,53 @@
-import React, { useContext, useState } from 'react'
-import AuthContext from '../components/context/AuthContext';
+import React, { useState } from 'react'
+import { useNavigate } from "react-router-dom";
+import { auth } from '../dbConfig';
+import { signInWithEmailAndPassword } from 'firebase/auth'
 
 const Login = () => {
-  const [code, setCode] = useState();
-  const { login } = useContext(AuthContext);
+  const [loginCredentials, setLoginCredentials] = useState({
+    email: "",
+    password: "",
+  });
+  const [error, setError] = useState("");
 
-  function handleSubmit(e) {
+  const navigate = useNavigate();
+
+  async function handleSubmit(e) {
     e.preventDefault();
-    console.log(typeof code)
-    if (Number(code) === 2111) {
-      login({ code })
-    } else {
-      alert("Invalid Code !")
+
+    try {
+      const userCredential = await signInWithEmailAndPassword(auth, loginCredentials.email, loginCredentials.password)
+      const user = userCredential.user;
+      console.log('User signed up:', user);
+      navigate('/')
+    } catch (error) {
+      setError("Invalid email or Password")
     }
   }
+
   return (
     <div className="login-page">
       <form onSubmit={handleSubmit}>
-        <input type="number" placeholder='Enter Code' value={code} onChange={(e) => setCode(e.target.value)} />
-        {/* <button type='submit' id='login-button'>OK</button> */}
+        <input
+          required
+          type="email"
+          placeholder='enter email...'
+          name="email"
+          onChange={(e) => setLoginCredentials({ ...loginCredentials, [e.target.name]: e.target.value })}
+        />
+        <input
+          required
+          type="password"
+          placeholder='enter password'
+          name="password"
+          onChange={(e) => setLoginCredentials({ ...loginCredentials, [e.target.name]: e.target.value })}
+        />
+        <button type='submit'>Submit</button>
+
+        {error && <span>{error}</span>}
       </form>
+      {/* <button onClick={signInwithGoogle}>Sign in with google</button> */}
+      {/* <button onClick={handleLogout}>Logout</button> */}
     </div>
 
   )

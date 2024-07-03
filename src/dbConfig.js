@@ -1,5 +1,6 @@
 import { initializeApp } from "firebase/app";
-import { getDatabase } from "firebase/database";
+import { getDatabase, ref, update, get } from "firebase/database";
+import { getAuth, GoogleAuthProvider } from 'firebase/auth';
 
 const firebaseConfig = {
   apiKey: "AIzaSyBbq6aiKiefhq-8dLbbAcNKZ48lCJxQckU",
@@ -13,5 +14,36 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig)
 const firebaseDb = getDatabase(app);
+const auth = getAuth(app);
+const googleProvider = new GoogleAuthProvider()
 
-export { firebaseDb };
+// const updateAllDocuments = async () => {
+//   const path = '/path/to/your/documents'; // Change this to your path
+//   const newField = { createdBy: 'rpvvamsi@gmail.com' }; // Change this to your new field
+
+//   try {
+//     const updates = {};
+//     const expenseRef = ref(firebaseDb, 'expenses');
+//     await get(expenseRef).then((snapshot) => {
+//         if (snapshot.exists()) {
+//           snapshot.forEach((childSnapShot) => {
+//             const key = childSnapShot.key;
+//             updates[key] = {
+//               ...childSnapShot.val(),
+//               ...newField,
+//             }
+//           }) 
+//         }
+//     });
+//     await update(expenseRef,updates)
+// } catch (err) {
+//     console.log(err.message)
+// }
+// };
+
+// updateAllDocuments() 
+
+
+
+export { firebaseDb, auth, googleProvider };
+
