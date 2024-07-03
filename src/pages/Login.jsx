@@ -2,13 +2,15 @@ import React, { useState } from 'react'
 import { useNavigate } from "react-router-dom";
 import { auth } from '../dbConfig';
 import { signInWithEmailAndPassword } from 'firebase/auth'
+import { useLocalStorage } from '../components/helpers/useLocalStorage';
 
 const Login = () => {
+  const[error, setError] = useState("")
+  const [setValue] = useLocalStorage()
   const [loginCredentials, setLoginCredentials] = useState({
     email: "",
     password: "",
   });
-  const [error, setError] = useState("");
 
   const navigate = useNavigate();
 
@@ -18,7 +20,9 @@ const Login = () => {
     try {
       const userCredential = await signInWithEmailAndPassword(auth, loginCredentials.email, loginCredentials.password)
       const user = userCredential.user;
-      console.log('User signed up:', user);
+      console.log('User signed up:', user.email);
+      window.localStorage.setItem('data', JSON.stringify(user.email));
+
       navigate('/')
     } catch (error) {
       setError("Invalid email or Password")
@@ -27,22 +31,23 @@ const Login = () => {
 
   return (
     <div className="login-page">
+      <h1 id='login-heading'>Login</h1>
       <form onSubmit={handleSubmit}>
         <input
           required
           type="email"
-          placeholder='enter email...'
+          placeholder='Enter email'
           name="email"
           onChange={(e) => setLoginCredentials({ ...loginCredentials, [e.target.name]: e.target.value })}
         />
         <input
           required
           type="password"
-          placeholder='enter password'
+          placeholder='Enter password'
           name="password"
           onChange={(e) => setLoginCredentials({ ...loginCredentials, [e.target.name]: e.target.value })}
         />
-        <button type='submit'>Submit</button>
+        <button type='submit' id='login-btn'>Submit</button>
 
         {error && <span>{error}</span>}
       </form>

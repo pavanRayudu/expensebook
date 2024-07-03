@@ -11,6 +11,7 @@ const InfoSection = () => {
 
     async function handleLogout() {
         await signOut(auth)
+        window.localStorage.setItem('data', null);
         navigate('/login')
     }
 

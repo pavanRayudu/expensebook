@@ -13,7 +13,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <AuthContextProvider>
         <Routes>
           <Route path="/login" element={<Login />} />
-          <Route path="/" element={<App />} />
+          <Route path="/" element={<ProtectedRoute><App /></ProtectedRoute>} />
         </Routes>
       </AuthContextProvider>
     </BrowserRouter>

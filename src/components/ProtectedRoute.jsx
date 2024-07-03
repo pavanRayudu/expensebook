@@ -4,8 +4,11 @@ import { Navigate } from 'react-router-dom';
 import { auth } from '../dbConfig';
 
 export const ProtectedRoute = ({ children }) => {
+    const user = JSON.parse(window.localStorage.getItem("data"));
+    console.log(user)
 
-    if (!auth.currentUser.email) {
+
+    if (user === null) {
         return <Navigate to='/login' />
     }
     return children;

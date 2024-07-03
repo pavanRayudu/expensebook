@@ -88,8 +88,8 @@ section {
   display: flex;
   justify-content: space-between;
 }
-#intro h1{
-}
+
+#intro h1 {}
 
 #logout-button {
   cursor: pointer;
@@ -174,10 +174,11 @@ section {
   outline: none;
   display: flex;
   align-items: center;
- 
+
   color: var(--clr-text);
 }
-#filter-button span{
+
+#filter-button span {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -404,11 +405,18 @@ section {
 
 /********************Login Page************************/
 .login-page {
-  height: 500px;
+  height: 100vh;
   display: grid;
+  place-content: center;
+  /* background-color: red; */
+}
+
+.login-page #login-heading {
+  text-align: center;
 }
 
 .login-page form {
+  margin-top: 2rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -418,17 +426,18 @@ section {
 
 .login-page form button,
 .login-page form input {
-  background-color: var(--clr-modal-background);
+  background: none;
   color: var(--clr-text);
   padding: 1rem;
   border: 2px solid var(--clr-expense-date-background);
   font-size: 1.2rem;
   border-radius: 8px;
-  letter-spacing: 0.2rem;
+  letter-spacing: 0.1rem;
   text-align: center;
   font-weight: bold;
 }
 
-#login-button {
-  display: none;
+#login-btn {
+  display: block;
+  background-color: var(--clr-button-backgroud);
 }
