@@ -18,7 +18,7 @@ const InfoSection = () => {
     return (
         <section id='info-section'>
             <div id='intro'>
-                <h1>{getDayState()}, Venkat!</h1>
+                <h1>{getDayState()}</h1>
             </div>
             <button id='logout-button' onClick={handleLogout}>
                 <AiOutlineLogout />

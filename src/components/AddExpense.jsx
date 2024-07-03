@@ -5,6 +5,7 @@ import ExpenseContext from './context/ExpenseContext';
 const INITIAL_DATA = { expenseDate: "", expenseType: "food", expenseName: "", expenseAmount: 0 }
 
 const AddExpense = ({ closeModal }) => {
+    const user = JSON.parse(window.localStorage.getItem("data"));
     const { addExpense } = useContext(ExpenseContext);
     const [formData, setFormData] = useState(INITIAL_DATA)
 
@@ -19,7 +20,7 @@ const AddExpense = ({ closeModal }) => {
 
     function handleFormSubmit(e) {
         e.preventDefault();
-        addExpense({ expenseId: getExpenseId(), ...formData })
+        addExpense({ expenseId: getExpenseId(), createdBy: user, ...formData })
         setFormData(INITIAL_DATA)
         closeModal(false)
     }

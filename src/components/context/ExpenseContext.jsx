@@ -1,7 +1,8 @@
 import { createContext, useEffect, useState } from "react";
-import { get, ref, push, remove, set } from 'firebase/database'
+import { get, ref, push, remove, set, query, equalTo, orderByChild } from 'firebase/database'
 import { firebaseDb } from "../../dbConfig";
 import { getMonth } from '../helpers/getMonth'
+import { user } from "../helpers/useLocalStorage";
 
 const ExpenseContext = createContext(null);
 
@@ -20,7 +21,8 @@ export function ExpenseContextProvider({ children }) {
     async function fetchData() {
         try {
             const expenseRef = ref(firebaseDb, 'expenses');
-            await get(expenseRef).then((snapshot) => {
+            const propertyQuery = query(expenseRef, orderByChild("createdBy"), equalTo(user));
+            await get(propertyQuery).then((snapshot) => {
                 if (snapshot.exists()) {
                     setData(snapshot.val())
                     const expenseArray = Object.values(snapshot.val())
@@ -79,7 +81,7 @@ export function ExpenseContextProvider({ children }) {
     function filterExpenses(filters) {
         let filterByCategory = [];
         let filterByMonth = [];
-        
+
         if (filters.expenseType === "Category") {
             filterByCategory = [...expenseList];
         } else {
@@ -95,7 +97,7 @@ export function ExpenseContextProvider({ children }) {
                 getMonth(exp.expenseDate) === filters.expenseMonth
             ))
         }
-        
+
         setExpenseList2(filterByMonth)
     }
 

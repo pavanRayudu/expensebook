@@ -2,11 +2,9 @@ import React, { useState } from 'react'
 import { useNavigate } from "react-router-dom";
 import { auth } from '../dbConfig';
 import { signInWithEmailAndPassword } from 'firebase/auth'
-import { useLocalStorage } from '../components/helpers/useLocalStorage';
 
 const Login = () => {
   const[error, setError] = useState("")
-  const [setValue] = useLocalStorage()
   const [loginCredentials, setLoginCredentials] = useState({
     email: "",
     password: "",
