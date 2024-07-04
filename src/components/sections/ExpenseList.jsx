@@ -57,7 +57,10 @@ const ExpenseList = () => {
         </div>
         <button id='filter-button' onClick={handleClick}>{!showFilters ? <span>Filter <IoFilter /> </span> : <ImCancelCircle />}</button>
       </div>
-      {isLoading ? <div id='loading-div'><span>Loading data...</span></div> : <ul className="expense-list">
+      {isLoading ? <div id='loading-div'><span>Loading data...</span></div> : <motion.ul 
+transition ={{staggerChildren: 0.05}}
+
+className="expense-list">
         {
           expenseList.map((expense) => {
             return (expense.expenseId ?
@@ -93,7 +96,7 @@ const ExpenseList = () => {
           })
         }
 
-      </ul>}
+      </motion.ul>}
     </section>
   )
 }
