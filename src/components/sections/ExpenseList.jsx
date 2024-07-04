@@ -58,7 +58,7 @@ const ExpenseList = () => {
         <button id='filter-button' onClick={handleClick}>{!showFilters ? <span>Filter <IoFilter /> </span> : <ImCancelCircle />}</button>
       </div>
       {isLoading ? <div id='loading-div'><span>Loading data...</span></div> : <motion.ul 
-transition ={{staggerChildren: 0.05}}
+transition ={staggerChildren: 0.05}
 
 className="expense-list">
         {
