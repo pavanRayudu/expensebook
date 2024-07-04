@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useAuth } from "../components/context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import { FcGoogle } from "react-icons/fc";
 
 
 const Login = () => {
@@ -19,8 +20,16 @@ const Login = () => {
     }).catch(err => {
       setError("Invalid Credentials")
       console.error(err)
-    }
-    )
+    })
+  }
+  
+  const handleSignInWithGoogle = () => {
+    auth.signInWithGoogleAccount().then(res => {
+      navigate('/')
+    }).catch(err => {
+      setError("Invalid Credentials")
+      console.error(err)
+    })
   }
 
   return (
@@ -41,9 +50,11 @@ const Login = () => {
           name="password"
           onChange={(e) => setLoginCredentials({ ...loginCredentials, [e.target.name]: e.target.value })}
         />
-        <button type='submit' id='login-btn'>Submit</button>
+        <button type='submit' id='login-btn'>Sign in</button>
         <span id="login-error">{error}</span>
       </form>
+      <hr id="divider" />
+      <button onClick={handleSignInWithGoogle} type='button' id='login-with-google-btn'><FcGoogle size={25} /> Sign in with Google</button>
     </div>
 
   )

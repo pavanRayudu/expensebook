@@ -1,7 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { auth } from "../../dbConfig";
-import { signInWithEmailAndPassword, createUserWithEmailAndPassword, onAuthStateChanged, signOut } from 'firebase/auth';
-import { useNavigate } from "react-router-dom";
+import { auth, googleProvider } from "../../dbConfig";
+import { signInWithEmailAndPassword, createUserWithEmailAndPassword, onAuthStateChanged, signOut, signInWithPopup } from 'firebase/auth';
 
 const AuthContext = createContext(null)
 
@@ -22,15 +21,16 @@ export function AuthContextProvider({ children }) {
     }, []);
 
     const loginInWithEmailAndPassword = async (obj) => {
-        console.log(obj)
         return await signInWithEmailAndPassword(auth, obj.email, obj.password)
     }
 
     const signUpWithEmailAndPassword = async (obj) => {
-        console.log(obj)
         await createUserWithEmailAndPassword(auth, obj.email, obj.password)
             .then(data => console.log(data))
             .catch(error => console.error(error))
+    }
+    const signInWithGoogleAccount = async () => {
+        return await signInWithPopup(auth, googleProvider);
     }
 
     const logOut = async () => {
@@ -41,6 +41,7 @@ export function AuthContextProvider({ children }) {
         currentUser,
         loading,
         loginInWithEmailAndPassword,
+        signInWithGoogleAccount,
         signUpWithEmailAndPassword,
         logOut,
     }

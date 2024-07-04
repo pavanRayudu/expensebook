@@ -426,28 +426,49 @@ section {
 }
 
 .login-page form {
-  margin-top: 2rem;
+  width: 300px;
+  margin-block: 2rem 1rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 1rem;
+  /* background-color: red; */
 }
 
-.login-page form button,
+
 .login-page form input {
+  width: 100%;
   background: none;
   color: var(--clr-text);
-  padding: 1rem;
   border: 2px solid var(--clr-expense-date-background);
-  font-size: 1.2rem;
+  font-size: 1rem;
   border-radius: 8px;
   letter-spacing: 0.1rem;
-  text-align: center;
+  padding: 1rem;
   font-weight: bold;
 }
 
-#login-btn {
-  display: block;
+
+#login-btn,#login-with-google-btn {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 8px;
   background-color: var(--clr-button-backgroud);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  font-weight: bold;
+  color: var(--clr-text);
+  gap: 1rem;
+}
+#login-with-google-btn {
+  background-color: var(--clr-text);
+  color: var(--clr-form-input-background);
+}
+#divider{
+  border: 1px solid var(--clr-text-gray);
+  opacity: 0.4;
+  margin-bottom: 2rem;
 }
