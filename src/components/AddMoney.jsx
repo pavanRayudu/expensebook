@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react'
 import { IoIosClose } from "react-icons/io";
 import ExpenseContext from './context/ExpenseContext';
 import { useAuth } from './context/AuthContext';
+import { motion } from 'framer-motion';
 
 const INITIAL_DATA = { expenseDate: "", expenseType: "salary", expenseName: "", expenseAmount: 0 }
 
@@ -28,7 +29,10 @@ const AddMoney = ({ handleModal }) => {
     }
 
     return (
-        <div className='add-expense-modal'>
+        <motion.div
+            initial={{ scale: 0.5, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            className='add-expense-modal'>
             <div className='expense-form'>
                 <IoIosClose id='close-btn' onClick={() => handleModal(false)} />
                 <form onSubmit={handleFormSubmit}>
@@ -78,7 +82,7 @@ const AddMoney = ({ handleModal }) => {
                     <button type='submit'>Add</button>
                 </form>
             </div>
-        </div>
+        </motion.div>
     )
 }
 

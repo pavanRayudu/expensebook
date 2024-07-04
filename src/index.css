@@ -472,3 +472,11 @@ section {
   opacity: 0.4;
   margin-bottom: 2rem;
 }
+
+#loading-div{
+  /* background-color: red; */
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

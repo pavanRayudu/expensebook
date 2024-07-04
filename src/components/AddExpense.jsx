@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react'
 import { IoIosClose } from "react-icons/io";
 import ExpenseContext from './context/ExpenseContext';
 import { useAuth } from './context/AuthContext';
+import { motion } from 'framer-motion';
 
 const INITIAL_DATA = { expenseDate: "", expenseType: "food", expenseName: "", expenseAmount: 0 }
 
@@ -28,9 +29,15 @@ const AddExpense = ({ closeModal }) => {
 
     return (
         <div className='add-expense-modal'>
-            <div className='expense-form'>
+            <motion.div
+                initial={{ scale: 0.5, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+
+                className='expense-form'>
                 <IoIosClose id='close-btn' onClick={() => closeModal(false)} />
-                <form onSubmit={handleFormSubmit}>
+                <motion.form
+
+                    onSubmit={handleFormSubmit}>
                     <div className="input-field">
                         <label htmlFor="expense-type">Expense type: </label>
                         <select
@@ -80,8 +87,8 @@ const AddExpense = ({ closeModal }) => {
                             required />
                     </div>
                     <button type='submit'>Add</button>
-                </form>
-            </div>
+                </motion.form>
+            </motion.div>
         </div>
     )
 }

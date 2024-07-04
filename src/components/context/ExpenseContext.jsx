@@ -9,6 +9,7 @@ export function ExpenseContextProvider({ children }) {
     const [data, setData] = useState({});
     const [expenseList, setExpenseList] = useState([]);
     const [expenseList2, setExpenseList2] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
     const expenseTypes = Array.from(new Set(expenseList.map(expense => expense.expenseType)))
     const auth = useAuth()
 
@@ -18,6 +19,7 @@ export function ExpenseContextProvider({ children }) {
 
     //fetching the expenses data from database
     async function fetchData() {
+        setIsLoading(true)
         if (auth.currentUser) {
             try {
                 const expenseRef = ref(firebaseDb, 'expenses');
@@ -28,6 +30,7 @@ export function ExpenseContextProvider({ children }) {
                         const expenseArray = Object.values(snapshot.val())
                         setExpenseList(expenseArray)
                         setExpenseList2(expenseArray)
+                        setIsLoading(false)
                     }
                 })
             } catch (err) {
@@ -110,6 +113,7 @@ export function ExpenseContextProvider({ children }) {
         removeExpense,
         filterExpenses,
         expenseTypes,
+        isLoading,
     };
 
     return <ExpenseContext.Provider value={context}>{children}</ExpenseContext.Provider>

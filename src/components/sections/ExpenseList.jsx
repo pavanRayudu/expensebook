@@ -4,6 +4,7 @@ import { FaMinus } from "react-icons/fa";
 import { month } from '../helpers/getMonth'
 import { IoFilter } from "react-icons/io5";
 import { ImCancelCircle } from "react-icons/im";
+import { motion } from 'framer-motion';
 
 const INITIAL_VALUES = {
   expenseType: "Category",
@@ -12,7 +13,7 @@ const INITIAL_VALUES = {
 
 
 const ExpenseList = () => {
-  const { expenseList, removeExpense, filterExpenses, expenseTypes } = useContext(ExpenseContext);
+  const { isLoading, expenseList, removeExpense, filterExpenses, expenseTypes } = useContext(ExpenseContext);
   const [filterOptions, setfilterOptions] = useState(INITIAL_VALUES);
   const [showFilters, setShowFilters] = useState(false)
 
@@ -56,11 +57,16 @@ const ExpenseList = () => {
         </div>
         <button id='filter-button' onClick={handleClick}>{!showFilters ? <span>Filter <IoFilter /> </span> : <ImCancelCircle />}</button>
       </div>
-      <ul className="expense-list">
+      {isLoading ? <div id='loading-div'><span>Loading data...</span></div> : <ul className="expense-list">
         {
           expenseList.map((expense) => {
             return (expense.expenseId ?
-              <li className='expense-item' key={`${expense.expenseId} + ${expense.expenseName}`}>
+              <motion.li
+                initial={{ x: 50 }}
+                animate={{ x: 0 }}
+                className='expense-item'
+                key={`${expense.expenseId} + ${expense.expenseName}`}
+              >
                 <button className='delete-expense' onClick={() => handleDeletion(expense)}>
                   <FaMinus />
                 </button>
@@ -82,12 +88,12 @@ const ExpenseList = () => {
                 <div className="expense-amount" id={expense.expenseType}>
                   <span>Rs.{expense.expenseAmount}/-</span>
                 </div>
-              </li> : <></>
+              </motion.li> : <></>
             )
           })
         }
 
-      </ul>
+      </ul>}
     </section>
   )
 }
