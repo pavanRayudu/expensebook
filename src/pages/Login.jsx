@@ -1,31 +1,26 @@
-import React, { useContext, useState } from 'react'
+import { useState } from "react";
+import { useAuth } from "../components/context/AuthContext";
 import { useNavigate } from "react-router-dom";
-import { auth } from '../dbConfig';
-import { signInWithEmailAndPassword } from 'firebase/auth'
-import AuthContext from '../components/context/AuthContext';
+
 
 const Login = () => {
-  const [error, setError] = useState("")
-  const { updateUser } = useContext(AuthContext);
+  const [error, setError] = useState()
   const [loginCredentials, setLoginCredentials] = useState({
     email: "",
     password: "",
   });
+  const auth = useAuth();
+  const navigate = useNavigate()
 
-  const navigate = useNavigate();
-
-  async function handleSubmit(e) {
+  const handleSubmit = (e) => {
     e.preventDefault();
-
-    try {
-      const userCredential = await signInWithEmailAndPassword(auth, loginCredentials.email, loginCredentials.password)
-      const user = userCredential.user;
-      console.log('User signed up:', user.email);
-      window.localStorage.setItem('data', JSON.stringify(user.email));
+    auth.loginInWithEmailAndPassword(loginCredentials).then(res => {
       navigate('/')
-    } catch (error) {
-      setError("Invalid email or Password")
+    }).catch(err => {
+      setError("Invalid Credentials")
+      console.error(err)
     }
+    )
   }
 
   return (
@@ -47,11 +42,8 @@ const Login = () => {
           onChange={(e) => setLoginCredentials({ ...loginCredentials, [e.target.name]: e.target.value })}
         />
         <button type='submit' id='login-btn'>Submit</button>
-
-        {error && <span>{error}</span>}
+        <span id="login-error">{error}</span>
       </form>
-      {/* <button onClick={signInwithGoogle}>Sign in with google</button> */}
-      {/* <button onClick={handleLogout}>Logout</button> */}
     </div>
 
   )

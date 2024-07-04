@@ -1,12 +1,9 @@
-import React, { useContext } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Navigate } from 'react-router-dom';
-import { auth } from '../dbConfig';
+import { useAuth } from './context/AuthContext';
 
 export const ProtectedRoute = ({ children }) => {
-    const user = auth.currentUser;
+    const auth = useAuth()
 
-    if (!user) {
-        return <Navigate to='/login' />
-    }
-    return children;
+    return (auth.currentUser === undefined) ? <Navigate to='/login' /> : children
 }

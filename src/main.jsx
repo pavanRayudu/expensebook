@@ -5,19 +5,20 @@ import './index.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Login from './pages/Login.jsx'
 import { ProtectedRoute } from './components/ProtectedRoute.jsx'
+import { AuthContextProvider, useAuth } from './components/context/AuthContext.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
+
   <React.StrictMode>
-    <BrowserRouter>
-     
+    <AuthContextProvider>
+      <BrowserRouter>
         <Routes>
           <Route path="/login" element={<Login />} />
-          <Route path="/" element={
-            <ProtectedRoute>
-              <App />
-            </ProtectedRoute>} />
+          <Route path="/" element={<ProtectedRoute>
+            <App />
+          </ProtectedRoute>} />
         </Routes>
-     
-    </BrowserRouter>
+      </BrowserRouter>
+    </AuthContextProvider>
   </React.StrictMode>,
 )

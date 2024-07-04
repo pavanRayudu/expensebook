@@ -1,11 +1,12 @@
 import React, { useContext, useState } from 'react'
 import { IoIosClose } from "react-icons/io";
 import ExpenseContext from './context/ExpenseContext';
+import { useAuth } from './context/AuthContext';
 
 const INITIAL_DATA = { expenseDate: "", expenseType: "food", expenseName: "", expenseAmount: 0 }
 
 const AddExpense = ({ closeModal }) => {
-    const user = JSON.parse(window.localStorage.getItem("data"));
+    const user = useAuth();
     const { addExpense } = useContext(ExpenseContext);
     const [formData, setFormData] = useState(INITIAL_DATA)
 
@@ -20,7 +21,7 @@ const AddExpense = ({ closeModal }) => {
 
     function handleFormSubmit(e) {
         e.preventDefault();
-        addExpense({ expenseId: getExpenseId(), createdBy: user, ...formData })
+        addExpense({ expenseId: getExpenseId(), createdBy: user.currentUser, ...formData })
         setFormData(INITIAL_DATA)
         closeModal(false)
     }

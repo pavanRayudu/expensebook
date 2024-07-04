@@ -1,12 +1,14 @@
 import React, { useContext, useState } from 'react'
 import { IoIosClose } from "react-icons/io";
 import ExpenseContext from './context/ExpenseContext';
+import { useAuth } from './context/AuthContext';
 
 const INITIAL_DATA = { expenseDate: "", expenseType: "salary", expenseName: "", expenseAmount: 0 }
 
 const AddMoney = ({ handleModal }) => {
     const { addExpense } = useContext(ExpenseContext);
     const [formData, setFormData] = useState(INITIAL_DATA)
+    const user = useAuth();
 
     function handleChange(e) {
         const { name, value } = e.target;
@@ -19,7 +21,8 @@ const AddMoney = ({ handleModal }) => {
 
     function handleFormSubmit(e) {
         e.preventDefault();
-        addExpense({ expenseId: getExpenseId(), ...formData })
+        addExpense({ expenseId: getExpenseId(), createdBy: user.currentUser, ...formData })
+
         setFormData(INITIAL_DATA)
         handleModal(false)
     }

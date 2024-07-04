@@ -1,17 +1,49 @@
-import { createContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
+import { auth } from "../../dbConfig";
+import { signInWithEmailAndPassword, createUserWithEmailAndPassword, onAuthStateChanged, signOut } from 'firebase/auth';
+import { useNavigate } from "react-router-dom";
 
-const AuthContext = createContext({
-    username: "",
-    updateUser: () => { },
-})
+const AuthContext = createContext(null)
+
+export const useAuth = () => useContext(AuthContext);
 
 export function AuthContextProvider({ children }) {
-    let username = "";
-    function updateUser(val) {
-        username = val
+    const [currentUser, setCurrentUser] = useState(null);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, user => {
+            setCurrentUser(user?.email);
+            setLoading(false);
+        });
+
+        // Clean up subscription
+        return () => unsubscribe();
+    }, []);
+
+    const loginInWithEmailAndPassword = async (obj) => {
+        console.log(obj)
+        return await signInWithEmailAndPassword(auth, obj.email, obj.password)
     }
-    const value = { username, updateUser }
+
+    const signUpWithEmailAndPassword = async (obj) => {
+        console.log(obj)
+        await createUserWithEmailAndPassword(auth, obj.email, obj.password)
+            .then(data => console.log(data))
+            .catch(error => console.error(error))
+    }
+
+    const logOut = async () => {
+        await signOut(auth);
+    }
+
+    const value = {
+        currentUser,
+        loading,
+        loginInWithEmailAndPassword,
+        signUpWithEmailAndPassword,
+        logOut,
+    }
+
     return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
 }
-
-export default AuthContext;

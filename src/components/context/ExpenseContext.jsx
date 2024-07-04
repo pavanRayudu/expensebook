@@ -2,31 +2,26 @@ import { createContext, useEffect, useState } from "react";
 import { get, ref, push, remove, set, query, equalTo, orderByChild } from 'firebase/database'
 import { firebaseDb } from "../../dbConfig";
 import { getMonth } from '../helpers/getMonth'
-import { auth } from "../../dbConfig";
+import { useAuth } from "./AuthContext";
 const ExpenseContext = createContext(null);
 
 export function ExpenseContextProvider({ children }) {
     const [data, setData] = useState({});
     const [expenseList, setExpenseList] = useState([]);
     const [expenseList2, setExpenseList2] = useState([]);
-    const [error, setError] = useState("");
     const expenseTypes = Array.from(new Set(expenseList.map(expense => expense.expenseType)))
-
+    const auth = useAuth()
 
     useEffect(() => {
         fetchData()
-    }, [])
-
-
+    }, [auth.currentUser])
 
     //fetching the expenses data from database
     async function fetchData() {
-        const user = auth.currentUser;
-
-        if (user) {
+        if (auth.currentUser) {
             try {
                 const expenseRef = ref(firebaseDb, 'expenses');
-                const propertyQuery = query(expenseRef, orderByChild("createdBy"), equalTo(user.email));
+                const propertyQuery = query(expenseRef, orderByChild("createdBy"), equalTo(auth.currentUser));
                 await get(propertyQuery).then((snapshot) => {
                     if (snapshot.exists()) {
                         setData(snapshot.val())
