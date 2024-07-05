@@ -462,6 +462,8 @@ section {
   font-weight: bold;
   color: var(--clr-text);
   gap: 1rem;
+outline:none;
+border:none;
 }
 #login-with-google-btn {
   background-color: var(--clr-text);
