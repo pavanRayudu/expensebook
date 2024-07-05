@@ -17,8 +17,9 @@ const AddMoney = ({ handleModal }) => {
     }
 
     function getExpenseId() {
-        return new Date().getMilliseconds();
+        return Math.floor(Date.now());
     }
+
 
     function handleFormSubmit(e) {
         e.preventDefault();
