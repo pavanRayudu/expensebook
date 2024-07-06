@@ -30,8 +30,9 @@ export function ExpenseContextProvider({ children }) {
                         const expenseArray = Object.values(snapshot.val())
                         setExpenseList(expenseArray)
                         setExpenseList2(expenseArray)
-                        setIsLoading(false)
                     }
+                    setIsLoading(false)
+
                 })
             } catch (err) {
                 console.log(err.message)

@@ -252,6 +252,27 @@ section {
   gap: 0.3rem;
 }
 
+.empty-list{
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 3rem;
+  text-align: center;
+  gap: 1rem;
+}
+
+.empty-list #empty-svg{
+  margin: 0;
+  padding: 0;
+  width: 100px;
+  opacity: 0.5;
+}
+.empty-list h3{
+  color: var(--clr-text-gray);
+  font-style: italic;
+}
 .expense-list::-webkit-scrollbar {
   display: none;
 }

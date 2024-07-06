@@ -5,6 +5,7 @@ import { month } from '../helpers/getMonth'
 import { IoFilter } from "react-icons/io5";
 import { ImCancelCircle } from "react-icons/im";
 import { motion } from 'framer-motion';
+import empty from '../../../assets/svgs/empty.svg'
 
 const INITIAL_VALUES = {
   expenseType: "Category",
@@ -39,8 +40,8 @@ const ExpenseList = () => {
 
   return (
     <section id='expenses-list'>
-      <div id="filters-section">
 
+      <div id="filters-section">
         <div className="filters" style={{ display: showFilters ? `flex` : `none` }}>
           <select name="expenseType" id="expenseType" value={filterOptions.expenseType} onChange={handleChange}>
             <option value="Category">Category</option>
@@ -60,7 +61,7 @@ const ExpenseList = () => {
       {isLoading ? <div id='loading-div'><span>Loading data...</span></div> :
         <motion.ul
           className="expense-list">
-          {
+          {expenseList.length > 0 ?
             expenseList.map((expense) => {
               return (expense.expenseId ?
                 <motion.li
@@ -92,10 +93,17 @@ const ExpenseList = () => {
                   </div>
                 </motion.li> : <></>
               )
-            })
+            }) : <div className='empty-list'>
+
+              <img src={empty} alt="" id='empty-svg' />
+              <h3>No expenses found, Add expense or funds</h3>
+             
+
+            </div>
           }
 
         </motion.ul>}
+
     </section>
   )
 }
