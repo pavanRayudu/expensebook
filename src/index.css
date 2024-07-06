@@ -538,7 +538,7 @@ border:none;
   justify-content: center;
   width: 100%;
   bottom: 0;
-  padding:1rem 1.5rem;
+  padding:1rem 1.5rem 0.5rem;
   background-color: var(--clr-section-background);
   border-radius: 40px 40px 0 0;
   box-shadow: -5px -5px 20px var(--clr-main-background);
