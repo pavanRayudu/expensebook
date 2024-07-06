@@ -1,5 +1,6 @@
 import { ExpenseContextProvider } from "./components/context/ExpenseContext";
 import { useState } from 'react';
+import LinksSection from "./components/sections/LinksSection";
 import ExpenseList from "./components/sections/ExpenseList";
 import AmountStatiscs from "./components/sections/AmountStatistics";
 import ExpenseActions from "./components/sections/ExpenseActions";
@@ -12,9 +13,12 @@ const App = () => {
       <main className="app">
         <InfoSection />
         <AmountStatiscs />
+        {/* <ExpenseActions /> */}
         <ExpenseList />
-        <ExpenseActions />
+        <LinksSection />
+
       </main>
+      
     </ExpenseContextProvider>
   )
 }

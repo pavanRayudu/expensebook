@@ -57,46 +57,45 @@ const ExpenseList = () => {
         </div>
         <button id='filter-button' onClick={handleClick}>{!showFilters ? <span>Filter <IoFilter /> </span> : <ImCancelCircle />}</button>
       </div>
-      {isLoading ? <div id='loading-div'><span>Loading data...</span></div> : <motion.ul 
- transition = {staggerChildren: 0.05}
+      {isLoading ? <div id='loading-div'><span>Loading data...</span></div> :
+        <motion.ul
+          className="expense-list">
+          {
+            expenseList.map((expense) => {
+              return (expense.expenseId ?
+                <motion.li
+                  initial={{ x: 50 }}
+                  animate={{ x: 0 }}
+                  className='expense-item'
+                  key={`${expense.expenseId} + ${expense.expenseName}`}
+                >
+                  <button className='delete-expense' onClick={() => handleDeletion(expense)}>
+                    <FaMinus />
+                  </button>
+                  <div className='expense-details'>
+                    <div className="expense-date">
+                      <span id='expense-date-month'>{
+                        month[new Date(expense.expenseDate).getUTCMonth()].substring(0, 3)
+                      }</span>
+                      <span id='expense-date-day'>{new Date(expense.expenseDate).getDate()}</span>
+                      <span id='expense-date-year'>{new Date(expense.expenseDate).getFullYear()}</span>
+                    </div>
+                    <div className="expense-description">
+                      <span className="expense-category">{expense.expenseType}</span>
+                      <p className='expense-name'>{expense.expenseName}</p>
+                    </div>
 
-className="expense-list">
-        {
-          expenseList.map((expense) => {
-            return (expense.expenseId ?
-              <motion.li
-                initial={{ x: 50 }}
-                animate={{ x: 0 }}
-                className='expense-item'
-                key={`${expense.expenseId} + ${expense.expenseName}`}
-              >
-                <button className='delete-expense' onClick={() => handleDeletion(expense)}>
-                  <FaMinus />
-                </button>
-                <div className='expense-details'>
-                  <div className="expense-date">
-                    <span id='expense-date-month'>{
-                      month[new Date(expense.expenseDate).getUTCMonth()].substring(0, 3)
-                    }</span>
-                    <span id='expense-date-day'>{new Date(expense.expenseDate).getDate()}</span>
-                    <span id='expense-date-year'>{new Date(expense.expenseDate).getFullYear()}</span>
                   </div>
-                  <div className="expense-description">
-                    <span className="expense-category">{expense.expenseType}</span>
-                    <p className='expense-name'>{expense.expenseName}</p>
+
+                  <div className="expense-amount" id={expense.expenseType}>
+                    <span>Rs.{expense.expenseAmount}/-</span>
                   </div>
+                </motion.li> : <></>
+              )
+            })
+          }
 
-                </div>
-
-                <div className="expense-amount" id={expense.expenseType}>
-                  <span>Rs.{expense.expenseAmount}/-</span>
-                </div>
-              </motion.li> : <></>
-            )
-          })
-        }
-
-      </motion.ul>}
+        </motion.ul>}
     </section>
   )
 }

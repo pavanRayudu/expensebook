@@ -7,6 +7,7 @@ import { useAuth } from '../context/AuthContext';
 const InfoSection = () => {
     const navigate = useNavigate()
     const auth = useAuth()
+    let name = auth?.username;
 
     function handleLogout() {
         auth.logOut()
@@ -17,8 +18,7 @@ const InfoSection = () => {
     return (
         <section id='info-section'>
             <div id='intro'>
-                <h1>{getDayState()}, {(auth?.currentUser?.substring(0, auth.currentUser.indexOf('@')))
-                }</h1>
+                <h1>{getDayState()}, {name ? ((name).trim().split(" "))[0] : " "}</h1>
             </div>
             <button id='logout-button' onClick={handleLogout}>
                 <AiOutlineLogout />

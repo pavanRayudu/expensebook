@@ -9,10 +9,12 @@ export const useAuth = () => useContext(AuthContext);
 export function AuthContextProvider({ children }) {
     const [currentUser, setCurrentUser] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [username, setUsername] = useState("");
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, user => {
             setCurrentUser(user?.email);
+            setUsername(user?.displayName);
             setLoading(false);
         });
 
@@ -30,7 +32,7 @@ export function AuthContextProvider({ children }) {
             .catch(error => console.error(error))
     }
     const signInWithGoogleAccount = async () => {
-        return await signInWithPopup(auth, googleProvider);
+        return await signInWithPopup(auth, googleProvider)
     }
 
     const logOut = async () => {
@@ -38,6 +40,7 @@ export function AuthContextProvider({ children }) {
     }
 
     const value = {
+        username,
         currentUser,
         loading,
         loginInWithEmailAndPassword,
