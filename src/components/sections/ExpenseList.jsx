@@ -67,6 +67,7 @@ const ExpenseList = () => {
                 <motion.li
                   initial={{ x: 50 }}
                   animate={{ x: 0 }}
+                  exit={{ x: 50 }}
                   className='expense-item'
                   key={`${expense.expenseId} + ${expense.expenseName}`}
                 >
@@ -97,7 +98,7 @@ const ExpenseList = () => {
 
               <img src={empty} alt="" id='empty-svg' />
               <h3>No expenses found, Add expense or funds</h3>
-             
+
 
             </div>
           }

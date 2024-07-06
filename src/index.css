@@ -388,12 +388,8 @@ section {
   font-weight: bold;
   color: var(--clr-text);
   border-radius: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 4px;
-  font-size: 0.9rem;
 }
+
 
 #expense-actions #add-money {
   background-color: white;
@@ -538,11 +534,29 @@ border:none;
   position: absolute;
   display: flex;
   align-items: center;
+  gap: 2rem;
   justify-content: center;
   width: 100%;
   bottom: 0;
-  padding: 1rem;
+  padding:1rem 1.5rem;
   background-color: var(--clr-section-background);
   border-radius: 40px 40px 0 0;
   box-shadow: -5px -5px 20px var(--clr-main-background);
+}
+
+#links-section .link-container{
+  /* background-color: red; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--clr-text-gray);
+}
+
+#links-section .link-container .link-icon{
+  font-size: 1.5rem;
+}
+
+#links-section .link-container .link-label{
+  font-size: 0.6rem;
 }
