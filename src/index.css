@@ -534,8 +534,7 @@ border:none;
   position: absolute;
   display: flex;
   align-items: center;
-  gap: 2rem;
-  justify-content: center;
+  justify-content: space-around;
   width: 100%;
   bottom: 0;
   padding:1rem 1.5rem 0.5rem;
@@ -559,4 +558,5 @@ border:none;
 
 #links-section .link-container .link-label{
   font-size: 0.6rem;
+  font-weight: bold;
 }
