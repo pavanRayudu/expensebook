@@ -15,7 +15,7 @@ const App = () => {
         <AmountStatiscs />
         {/* <ExpenseActions /> */}
         <ExpenseList />
-        <LinksSection />
+        
 
       </main>
       
