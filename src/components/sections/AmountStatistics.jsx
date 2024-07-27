@@ -36,7 +36,7 @@ const AmountStatistics = () => {
         <h1 id='balance-amount'><span>Balance</span>{totalReceivedMoney - totalExpense}</h1>
 
       </div>
-      <ExpenseActions />
+      {/* <ExpenseActions /> */}
     </section>
   )
 }

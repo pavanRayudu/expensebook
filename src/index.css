@@ -59,10 +59,9 @@ a:focus {
 
 .app {
   /* margin-inline: 0.75rem; */
-  padding-block: 0.5rem;
+  padding: 0.5rem 0.75rem;
   position: relative;
-  display: flex;
-  flex-direction: column;
+  display: grid;
   gap: 0.5rem;
   height: 100vh;
   height: calc(var(--vh, 1vh) * 100);
@@ -72,7 +71,7 @@ a:focus {
 section {
   padding: 1rem 0.5rem;
   border-radius: 8px;
-  margin-inline: 0.75rem;
+  background-color: var(--clr-section-background);
 }
 
 
@@ -80,16 +79,6 @@ section {
 #expense-actions,
 #expenses-list {
   background-color: var(--clr-section-background);
-}
-
-#expense-actions,
-#amount-stats,
-#info-section {
-  flex: 1;
-}
-
-#expenses-list {
-  flex: 16;
 }
 
 /**************** Info section styles *****************/
@@ -116,19 +105,11 @@ section {
 
 /**************** Expense-stats section styles *****************/
 #amount-stats {
-  display: flex;
-  padding: 0;
-  background-color: none;
-  gap: 0.5rem;
 }
 
 #amount-stats .amount-stats-figures {
   background-color: var(--clr-section-background);
   border-radius: 8px;
-  padding: 1rem 0.5rem;
-  width: 60%;
-  display: flex;
-  flex-direction: column;
   justify-content: space-between;
 }
 .amount-stats-figures hr{
