@@ -6,6 +6,7 @@ import { IoFilter } from "react-icons/io5";
 import { ImCancelCircle } from "react-icons/im";
 import { motion } from 'framer-motion';
 import empty from '../../../assets/svgs/empty.svg'
+import { Link } from 'react-router-dom';
 
 const INITIAL_VALUES = {
   expenseType: "Category",
@@ -35,7 +36,6 @@ const ExpenseList = () => {
     setShowFilters(prev => !prev)
     setfilterOptions(INITIAL_VALUES)
     filterExpenses(INITIAL_VALUES)
-
   }
 
   return (
@@ -57,6 +57,7 @@ const ExpenseList = () => {
           </select>
         </div>
         <button id='filter-button' onClick={handleClick}>{!showFilters ? <span>Filter <IoFilter /> </span> : <ImCancelCircle />}</button>
+        <Link to='/'><span>Home</span></Link>
       </div>
       {isLoading ? <div id='loading-div'><span>Loading data...</span></div> :
         <motion.ul
