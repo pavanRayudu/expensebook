@@ -1,13 +1,16 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { AiOutlineLogout } from "react-icons/ai";
 import { getDayState } from '../helpers/getDayState';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import Skeleton from 'react-loading-skeleton';
+import ExpenseContext from '../context/ExpenseContext';
 
 const InfoSection = () => {
     const navigate = useNavigate()
     const auth = useAuth()
     let name = auth?.username;
+    const { isLoading } = useContext(ExpenseContext)
 
     function handleLogout() {
         auth.logOut()
@@ -18,7 +21,10 @@ const InfoSection = () => {
     return (
         <section id='info-section'>
             <div id='intro'>
-                <h1>{getDayState()}, {name ? ((name).trim().split(" "))[0] : " "}</h1>
+                {
+                    isLoading ? <Skeleton baseColor='gray' width={180} height={30} /> : <h1>{getDayState()}, {name ? ((name).trim().split(" "))[0] : " "}</h1>
+
+                }
             </div>
             <button id='logout-button' onClick={handleLogout}>
                 <AiOutlineLogout />
