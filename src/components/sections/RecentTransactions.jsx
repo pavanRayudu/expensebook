@@ -66,14 +66,13 @@ const RecentTransactions = () => {
                         <h3>No expenses found, Add expense or funds</h3>
                     </div>)
                 }
+                <Link to='/transactions' className='show-all-transactions-link'>
 
-                {
-                    isLoading ? <Skeleton baseColor='gray' width={150} />
-                        :
-                        <Link to='/transactions' className='show-all-transactions-link'>
-                            <span className='transaction show-more'>View all transactions <FaArrowRight /></span>
-                        </Link>
-                }
+                    {
+                        isLoading ? <Skeleton baseColor='gray'  width={150}/>
+                            : <span className='transaction show-more'>View all transactions <FaArrowRight /></span>
+
+                    } </Link>
 
             </motion.ul>
 
