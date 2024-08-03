@@ -5,6 +5,7 @@ import { FaMinus } from "react-icons/fa";
 import { month } from '../helpers/getMonth'
 import empty from '../../../assets/svgs/empty.svg'
 import { Link } from 'react-router-dom';
+import { FaArrowRight } from "react-icons/fa6";
 
 
 const RecentTransactions = () => {
@@ -16,17 +17,10 @@ const RecentTransactions = () => {
         }
     }
 
-    function handleShowMoreTransactions() {
-
-    }
-
-
-
-
 
     return (
         <section id='recent-transaction-list'>
-            <span className='transaction label'>Recent transactions</span>
+            <h3>Recent transactions</h3>
 
             {isLoading ? <div id='loading-div'><span>Loading data...</span></div> :
                 <motion.ul
@@ -70,8 +64,8 @@ const RecentTransactions = () => {
                             <h3>No expenses found, Add expense or funds</h3>
                         </div>
                     }
-                    <Link to='/transactions'>
-                        <span className='transaction show-more' onClick={handleShowMoreTransactions}>view all transactions</span>
+                    <Link to='/transactions' className='show-all-transactions-link'>
+                        <span className='transaction show-more'>View all transactions <FaArrowRight /></span>
                     </Link>
 
                 </motion.ul>}

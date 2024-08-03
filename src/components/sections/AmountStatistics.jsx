@@ -1,14 +1,12 @@
 import React, { useContext, useMemo } from 'react'
-import { FaArrowAltCircleUp, FaArrowAltCircleDown, FaCircle } from "react-icons/fa";
 import ExpenseContext from '../context/ExpenseContext';
-import ExpenseActions from './ExpenseActions';
 
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 
-const AmountStatistics = () => {
+const AmountStatistics = ({month}) => {
   const { expenseList, isLoading } = useContext(ExpenseContext);
-  console.log(isLoading)
+ 
 
   const totalReceivedMoney = useMemo(() =>
     expenseList.reduce(function (accumulator, curValue) {
@@ -26,6 +24,7 @@ const AmountStatistics = () => {
   return (
     <section id='amount-stats'>
       <div className='amount-stats-figures'>
+        <h1>{month} Summary</h1>
         <h1 id='total-outgoing-amount' className='income-flow'>
           <span>Total Expenditure</span>
           {totalExpense || <Skeleton />} </h1>
