@@ -23,12 +23,11 @@ const InfoSection = () => {
             <div id='intro'>
                 {
                     isLoading ? <Skeleton baseColor='gray' width={180} height={30} /> : <h1>{getDayState()}, {name ? ((name).trim().split(" "))[0] : " "}</h1>
-
                 }
             </div>
-            <button id='logout-button' onClick={handleLogout}>
+            {isLoading ? <Skeleton baseColor='gray' width={30} height={30}/> : <button id='logout-button' onClick={handleLogout}>
                 <AiOutlineLogout />
-            </button>
+            </button>}
         </section>
     )
 }
