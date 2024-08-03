@@ -6,7 +6,7 @@ const SkeltonModal = () => {
     return (
         <SkeletonTheme className="sk-list" baseColor="gray" highlightColor="#444">
             {
-                [100,180,150,180,160,120,160].map((e, i) => {
+                [100,180,150,120,160].map((e, i) => {
                     return (
                         <div className="sk-list-item" key={i}>
                             <div className="sk-list-item-grp">
