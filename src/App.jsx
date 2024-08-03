@@ -10,7 +10,7 @@ import RecentTransactions from "./components/sections/RecentTransactions";
 const App = () => {
 
   return (
-    <ExpenseContextProvider>
+    
       <main className="app">
         <InfoSection />
         <AmountStatiscs />
@@ -18,7 +18,7 @@ const App = () => {
         <ExpenseActions />
         {/* <ExpenseList /> */}
       </main>
-    </ExpenseContextProvider>
+   
   )
 }
 

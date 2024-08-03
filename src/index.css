@@ -20,6 +20,11 @@ html {
   scroll-behavior: smooth;
 }
 
+a {
+  text-decoration: none;
+  color: var(--clr-text);
+}
+
 a:visited {
   color: initial;
 }
@@ -65,14 +70,13 @@ a:focus {
 }
 
 .app {
-  /* margin-inline: 0.75rem; */
   padding: 0.5rem 0.75rem;
   position: relative;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  height: 100dvh;
-  /* height: calc(var(--vh, 1vh) * 100); */
+  height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
 }
 
 section {
@@ -81,12 +85,6 @@ section {
   background-color: var(--clr-section-background);
 }
 
-
-#info-section,
-#expense-actions,
-#expenses-list {
-  background-color: var(--clr-section-background);
-}
 
 
 /**************** Info section styles *****************/
@@ -112,7 +110,9 @@ section {
 }
 
 /**************** Expense-stats section styles *****************/
-#amount-stats {}
+#amount-stats {
+
+}
 
 #amount-stats .amount-stats-figures {
   background-color: var(--clr-section-background);
@@ -171,6 +171,7 @@ section {
 
 /************************ Recent transactions ****************************************/
 #recent-transaction-list {
+  height: 100%;
   background-color: var(--clr-section-background);
 }
 
