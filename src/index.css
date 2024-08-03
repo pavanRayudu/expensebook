@@ -176,12 +176,12 @@ section {
 }
 
 .transaction {
-  color: var(--clr-label);
+  color: var(--clr-button-backgroud);
 
 }
 
 a .transaction.show-more {
-  color: var(--clr-label);
+  color: var(--clr-button-backgroud );
 }
 
 
