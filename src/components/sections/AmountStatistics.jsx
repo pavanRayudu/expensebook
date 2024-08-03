@@ -3,8 +3,12 @@ import { FaArrowAltCircleUp, FaArrowAltCircleDown, FaCircle } from "react-icons/
 import ExpenseContext from '../context/ExpenseContext';
 import ExpenseActions from './ExpenseActions';
 
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
+
 const AmountStatistics = () => {
-  const { expenseList } = useContext(ExpenseContext);
+  const { expenseList, isLoading } = useContext(ExpenseContext);
+  console.log(isLoading)
 
   const totalReceivedMoney = useMemo(() =>
     expenseList.reduce(function (accumulator, curValue) {
@@ -24,7 +28,7 @@ const AmountStatistics = () => {
       <div className='amount-stats-figures'>
         <h1 id='total-outgoing-amount' className='income-flow'>
           <span>Total Expenditure</span>
-          {totalExpense} </h1>
+          {totalExpense || <Skeleton />} </h1>
 
         {/* <span className='element'> <FaCircle /></span> */}
         {/* <span className='element'><FaCircle /></span> */}

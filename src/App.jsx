@@ -6,6 +6,7 @@ import AmountStatiscs from "./components/sections/AmountStatistics";
 import ExpenseActions from "./components/sections/ExpenseActions";
 import InfoSection from "./components/sections/InfoSection";
 import RecentTransactions from "./components/sections/RecentTransactions";
+import MonthSummary from "./components/sections/MonthSummary";
 
 const App = () => {
 
@@ -13,7 +14,8 @@ const App = () => {
     
       <main className="app">
         <InfoSection />
-        <AmountStatiscs />
+        <MonthSummary />
+        {/* <AmountStatiscs /> */}
         <RecentTransactions />
         <ExpenseActions />
         {/* <ExpenseList /> */}
