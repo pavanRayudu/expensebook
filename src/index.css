@@ -165,7 +165,7 @@ color: black;
 }
 
 .amount-stats-figures h1 span {
-  color: var(--clr-text);
+ 
   font-weight: lighter;
   font-size: 0.9rem;
   opacity: 0.8;
