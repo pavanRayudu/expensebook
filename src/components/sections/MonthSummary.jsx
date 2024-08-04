@@ -30,7 +30,7 @@ const MonthSummary = () => {
             {isLoading ? <Skeleton count={2} baseColor="#dbdbdb" highlightColor="gray" /> : <div>
                 <p>You have earned  <span id='income'>Rs.{totalReceivedMoneyInCurrentMonth}
                 </span> and Spent <span id='spent'>Rs.{totalExpenseInCurrentMonth}</span> </p>
-                <p>Net balance: <span id='balance'>Rs.{totalReceivedMoneyInCurrentMonth - totalExpenseInCurrentMonth}</span></p></div>}
+                {/*<p>Net balance: <span id='balance'>Rs.{totalReceivedMoneyInCurrentMonth - totalExpenseInCurrentMonth}</span></p>*/}</div>}
 
 
         </section>
