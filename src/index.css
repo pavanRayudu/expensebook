@@ -142,7 +142,9 @@ section {
 }
 
 /**************** Expense-stats section styles *****************/
-#amount-stats {}
+#amount-stats {
+background-image: linear-gradient(120deg, #a6c0fe 0%, #f68084 100%);
+}
 
 #amount-stats .amount-stats-figures {
   background-color: var(--clr-section-background);
