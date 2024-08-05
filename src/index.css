@@ -190,7 +190,7 @@ background-image: linear-gradient(120deg, #a6c0fe 0%, #f68084 100%);
 }
 
 #balance-amount {
-  color: var(--clr-text-gray);
+  color: black;
 }
 
 /*** Recent transactions ***/
