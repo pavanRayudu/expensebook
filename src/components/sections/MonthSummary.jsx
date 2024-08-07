@@ -42,8 +42,6 @@ const todayTotalExpense = useMemo(() =>
                 </span> and Spent <span id='spent'>Rs.{totalExpenseInCurrentMonth}</span> </p>
                 {/*<p>Net balance: <span id='balance'>Rs.{totalReceivedMoneyInCurrentMonth - totalExpenseInCurrentMonth}</span></p>*/}
 
-<p>Today expense: <span id='balance'>Rs.{todayTotalExpense}</span></p>
-
 </div>}
 
 
