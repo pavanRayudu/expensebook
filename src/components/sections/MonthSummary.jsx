@@ -17,7 +17,7 @@ const MonthSummary = () => {
 
 const todayTotalExpense = useMemo(() =>
         expenseList.reduce(function (accumulator, curValue) {
-            return accumulator + ((curValue.expenseType !== "salary" && curValue.expenseType !== "person" && Date(curValue.expenseDate) ===  Date().toLocaleDateString('en-GB').replace(/\//g, '-') ) ? Number(curValue.expenseAmount) : 0)
+            return accumulator + ((curValue.expenseType !== "salary" && curValue.expenseType !== "person" && curValue.expenseDate === Date().toISOString().slice(0, 10).split('-').reverse().join('-') ) ? Number(curValue.expenseAmount) : 0)
         }, 0)
         , [expenseList])
 
