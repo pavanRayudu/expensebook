@@ -17,7 +17,7 @@ const MonthSummary = () => {
 
 const todayTotalExpense = useMemo(() =>
         expenseList.reduce(function (accumulator, curValue) {
-            return accumulator + ((curValue.expenseType !== "salary" && curValue.expenseType !== "person" && curValue.expenseDate === Date()) ? Number(curValue.expenseAmount) : 0)
+            return accumulator + ((curValue.expenseType !== "salary" && curValue.expenseType !== "person" && Date(curValue.expenseDate) === Date()) ? Number(curValue.expenseAmount) : 0)
         }, 0)
         , [expenseList])
 
