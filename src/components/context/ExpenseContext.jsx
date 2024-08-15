@@ -3,6 +3,7 @@ import { get, ref, push, remove, set, query, equalTo, orderByChild } from 'fireb
 import { firebaseDb } from "../../dbConfig";
 import { getMonth } from '../helpers/getMonth'
 import { useAuth } from "./AuthContext";
+
 const ExpenseContext = createContext(null);
 
 export function ExpenseContextProvider({ children }) {
@@ -12,6 +13,7 @@ export function ExpenseContextProvider({ children }) {
     const [isLoading, setIsLoading] = useState(false);
     const expenseTypes = Array.from(new Set(expenseList.map(expense => expense.expenseType)))
     const auth = useAuth()
+
 
     useEffect(() => {
         fetchData()
@@ -30,9 +32,11 @@ export function ExpenseContextProvider({ children }) {
                         const expenseArray = Object.values(snapshot.val())
                         setExpenseList(expenseArray)
                         setExpenseList2(expenseArray)
+                    } else {
+                        setExpenseList([])
+                        setExpenseList2([])
                     }
                     setIsLoading(false)
-
                 })
             } catch (err) {
                 console.log(err.message)
@@ -115,6 +119,7 @@ export function ExpenseContextProvider({ children }) {
         filterExpenses,
         expenseTypes,
         isLoading,
+        setExpenseList
     };
 
     return <ExpenseContext.Provider value={context}>{children}</ExpenseContext.Provider>

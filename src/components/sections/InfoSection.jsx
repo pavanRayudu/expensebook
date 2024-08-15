@@ -10,7 +10,7 @@ const InfoSection = () => {
     const navigate = useNavigate()
     const auth = useAuth()
     let name = auth?.username;
-    const { isLoading } = useContext(ExpenseContext)
+    const { isLoading, setExpenseList, expenseList } = useContext(ExpenseContext)
 
     function handleLogout() {
         auth.logOut()
@@ -25,7 +25,7 @@ const InfoSection = () => {
                     isLoading ? <Skeleton baseColor='gray' width={180} height={30} /> : <h1>{getDayState()}, {name ? ((name).trim().split(" "))[0] : " "}</h1>
                 }
             </div>
-            {isLoading ? <Skeleton baseColor='gray' width={30} height={30}/> : <button id='logout-button' onClick={handleLogout}>
+            {isLoading ? <Skeleton baseColor='gray' width={30} height={30} /> : <button id='logout-button' onClick={handleLogout}>
                 <AiOutlineLogout />
             </button>}
         </section>

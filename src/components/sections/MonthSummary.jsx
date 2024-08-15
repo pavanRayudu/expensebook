@@ -4,10 +4,8 @@ import { getMonth } from '../helpers/getMonth';
 import Skeleton from 'react-loading-skeleton';
 
 const MonthSummary = () => {
-    console.log(getMonth(Date()))
 
     const { expenseList, isLoading } = useContext(ExpenseContext);
-    console.log(isLoading)
 
     const totalExpenseInCurrentMonth = useMemo(() =>
         expenseList.reduce(function (accumulator, curValue) {
@@ -16,17 +14,12 @@ const MonthSummary = () => {
         , [expenseList])
 
 
-
-
-
-
     const totalReceivedMoneyInCurrentMonth = useMemo(() =>
         expenseList.reduce(function (accumulator, curValue) {
             return accumulator + (((curValue.expenseType === "salary" || curValue.expenseType === "person") && getMonth(curValue.expenseDate) === getMonth(Date())) ? Number(curValue.expenseAmount) : 0)
         }, 0)
         , [expenseList])
 
-    console.log(totalExpenseInCurrentMonth)
     return (
         <section id='month-summary'>
 

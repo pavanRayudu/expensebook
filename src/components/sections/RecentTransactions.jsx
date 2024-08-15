@@ -11,7 +11,7 @@ import Skeleton from 'react-loading-skeleton';
 
 
 const RecentTransactions = () => {
-    const { isLoading, expenseList, removeExpense, filterExpenses, expenseTypes } = useContext(ExpenseContext);
+    const { isLoading, expenseList, removeExpense, } = useContext(ExpenseContext);
 
     function handleDeletion(expense) {
         if (confirm(`Are you sure to delete ${expense.expenseName}?`)) {
@@ -22,13 +22,13 @@ const RecentTransactions = () => {
 
     return (
         <section id='recent-transaction-list'>
-            {isLoading ? <Skeleton baseColor='gray' width={150} /> : <h3>Recent transactions</h3>}
+            {isLoading ? <Skeleton baseColor='gray' width={150} /> : <h3>Recent Expenses</h3>}
 
             {/* {isLoading ? <div id='loading-div'><span>Loading data...</span></div> : */}
             <motion.ul
                 className="expense-list">
                 {isLoading ? <SkeltonModal /> : ((expenseList.length > 0) ?
-                    expenseList.slice(0, 7).map((expense) => {
+                    expenseList.slice(0, 5).map((expense) => {
                         return (expense.expenseId ?
                             <motion.li
                                 initial={{ x: 50 }}
@@ -66,13 +66,12 @@ const RecentTransactions = () => {
                         <h3>No expenses found, Add expense or funds</h3>
                     </div>)
                 }
-                <Link to='/transactions' className='show-all-transactions-link'>
-
+                {expenseList.length > 0 && <Link to='/transactions' className='show-all-transactions-link'>
                     {
-                        isLoading ? <Skeleton baseColor='gray'  width={150}/>
+                        isLoading ? <Skeleton baseColor='gray' width={150} />
                             : <span className='transaction show-more'>View all transactions <FaArrowRight /></span>
 
-                    } </Link>
+                    } </Link>}
 
             </motion.ul>
 

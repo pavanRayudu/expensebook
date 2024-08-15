@@ -54,7 +54,7 @@ const Login = () => {
         <span id="login-error">{error}</span>
       </form>
       <hr id="divider" />
-     {/* <button onClick={handleSignInWithGoogle} type='button' id='login-with-google-btn'><FcGoogle size={25} /> Sign in with Google</button> */}
+     <button onClick={handleSignInWithGoogle} type='button' id='login-with-google-btn'><FcGoogle size={25} /> Sign in with Google</button>
     </div>
 
   )
