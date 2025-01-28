@@ -1,7 +1,7 @@
 Expense tracker using React JS and Firebase
 
 
-Live App link: https://spendlog.vercel.app/login
+Live App link: https://spendlog.vercel.app
 
 May 2024 - Present
 
