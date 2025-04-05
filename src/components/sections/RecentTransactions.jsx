@@ -22,9 +22,12 @@ const RecentTransactions = () => {
 
     return (
         <section id='recent-transaction-list'>
-            {isLoading ? <Skeleton baseColor='gray' width={150} /> : <h3>Recent Expenses</h3>}
+            {isLoading ? <Skeleton baseColor='gray' width={150} /> :
+                <h3>Recent Transactions
+            </h3>}
 
             {/* {isLoading ? <div id='loading-div'><span>Loading data...</span></div> : */}
+            {/* removed.slice(0, 5) from expenselist - this will enable to show the no of expense items  */}
             <motion.ul
                 className="expense-list">
                 {isLoading ? <SkeltonModal /> : ((expenseList.length > 0) ?

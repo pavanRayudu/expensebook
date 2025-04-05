@@ -6,5 +6,7 @@ export const month = [
 ];
 
 export function getMonth(date) {
-    return month[new Date(date).getUTCMonth()];
+    const m = month[new Date(date).getUTCMonth()];
+    // console.log(m)
+    return m;
 }
