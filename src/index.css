@@ -77,7 +77,7 @@ a:focus {
   flex-direction: column;
   gap: 0.5rem;
   height: 100vh;
-  height: calc(var(--vh, 1vh) * 100);
+  height: calc(var(--vh, 1vh) * 90);
 }
 
 section {
