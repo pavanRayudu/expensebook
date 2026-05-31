@@ -46,6 +46,7 @@ const AddMoney = ({ handleModal }) => {
 
                             <option value="salary">Salary</option>
                             <option value="person">Person</option>
+<option value="Others">Others</option>
                         </select>
                     </div>
                     <div className="input-field">
